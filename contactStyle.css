@@ -1,0 +1,168 @@
+html, body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 2vmin;
+      background: white;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+header {
+  z-index: 900;
+  position: sticky;
+  top: 0;
+  background: black;
+  color: #fff;
+  padding: 0 5vw;
+  margin: 0;
+  text-align: center;
+  overflow: auto;
+  transition:0.2s all ease;
+}
+
+.smallerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.8rem;
+  padding-top: 1rem;
+}
+
+/*@media (max-width: 800px) {
+  .smallerHeader {
+    flex-direction: column;
+  }
+}*/
+
+header:hover{
+  box-shadow: 0px 0px 2vw rgba(0,0,0,0.5);
+}
+
+header h1 { 
+  font-size: 2.5rem;
+  padding: 0.8em 0 0.4em 0;
+  margin: 0;
+}
+
+.smallerHeader h1 {
+  font-size: clamp(1.8rem, 10vw - 6rem, 2.3rem);
+  padding: 0;
+  margin: 0;
+}
+
+header nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  gap: 1em;
+}
+
+
+header button {
+  position: relative;
+  border-radius:0.4em;
+  position:relative;
+  background:rgba(255,255,255,0); 
+  padding: 0.5em;
+  margin: 0 0 0.35em 0;
+  width: 8em;
+  box-shadow:0px 0px 0px 0px #B8B8B8;
+  
+  font-size : clamp(1.4rem, 1vw + 0.5vh, 2rem);
+  font-weight: 300;
+  color:#777;
+
+  cursor:pointer;
+  transition:0.1s all ease;
+
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+
+  text-transform: uppercase;
+}
+
+.smallerHeader button {
+  font-size: clamp(1.2rem, 8vw - 6rem, 1.9rem);
+  padding: 0.3em 0 0.3em 0;
+  width: 8em;
+  margin: auto;
+}
+
+  @media (max-width: 600px) {
+    .smallerHeader button {
+      height: 4em;
+      width: 9em;
+    }
+
+    header button {
+      height: 3.5em;
+      width: 9em;
+    }
+
+    header nav {
+      gap: 2.3rem;
+    }
+  }
+
+header button:hover {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 0.9vw rgba(255,255,255,0.65);
+  color: lightgrey;
+}
+
+header button:active{
+  color: white;
+  background: rgba(255,255,255,0.2); 
+  box-shadow: inset 0px 0px 0.6vw rgba(0,0,0,0.5);
+}
+
+#socials {
+	display: flex;
+	text-align: center;
+	align-self: center;
+	flex-direction: column;
+	margin: auto;
+	width: clamp(15rem, 20%, 40rem);
+	gap: 3rem;
+	padding: 2rem;
+}
+
+@media (min-aspect-ratio: 1.2/1) {
+  #socials {
+    flex-direction: row;
+    width: 80%;
+  }
+
+  .socialMedia {
+  	width: 33%;
+  	aspect-ratio: 1/1.2;
+  }
+}
+
+.socialMedia {
+	display: flex;
+	flex-direction: column;
+	aspect-ratio: 1/1.2;
+	align-items: center;
+	justify-content:center;
+	border-style: solid;
+	border-radius: 5%;
+	box-shadow: 0.5rem 0.5rem;
+}
+
+.socialMedia img {
+	width: 60%;
+}
+
+

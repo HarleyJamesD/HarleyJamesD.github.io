@@ -14,9 +14,10 @@ button {
 }
 
 header {
+  z-index: 900;
   position: sticky;
   top: 0;
-  background: #222;
+  background: black;
   color: #fff;
   padding: 0 5vw;
   margin: 0;
@@ -203,7 +204,7 @@ h2{
   border-color: black;
   border-width: 0.2rem;
   border-style: solid;
-
+  overflow: hidden;
   box-shadow: 0.5rem 0.5rem;
 }
 
