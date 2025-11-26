@@ -1,0 +1,153 @@
+h2{
+  margin-left: 5%;
+  font-size: clamp(1.8rem, 2.2vw, 29rem);
+}
+
+#aboutMe {
+  margin:clamp(1.4rem, 4vw + 0.5vh, 8rem);
+  margin-left: clamp(1.4rem, 18vw - 5rem, 15rem);
+  margin-right: clamp(1.4rem, 18vw - 5rem, 15rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myPicture {
+  flex: 0 0 25%;
+  margin-left: 1rem;
+  margin-top: 0.5em;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  box-sizing: border-box;
+  border-width: 3rem;
+  border-radius: 0.6rem;
+  border-color: black;
+  border-width: 0.3rem;
+  border-style: solid;
+  overflow: hidden;
+  box-shadow: 0.5rem 0.5rem;
+}
+
+#myPicture:hover {
+  background-color: #F2F2F2;
+  position: relative;
+  left: 0.5rem;
+  top: 0.5rem;
+  box-shadow: none;
+}
+
+#myPicture img {
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  margin-top: -5%;
+}
+
+#aboutMeBlurb {
+  margin-left: clamp(0.1rem, 3rem, 6rem);
+}
+
+#aboutMeBlurb h2 {
+  display: inline;
+  margin: 0;
+  margin-left: 1%;
+}
+
+#aboutMeBlurb p {
+  margin: 1% 0 0 0;
+  font-size: clamp(1.0rem, 1.5vw, 15rem);
+}
+
+#highlightedProjects{
+  margin-bottom: clamp(2.5rem, 6vw, 15rem);
+  padding-top: 1rem;
+}
+
+#projectCardDeck{
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+}
+
+.ProjectCard {
+  width: 20%;
+  aspect-ratio: 1/1.4;
+  padding: 1% 1% 0.2% 1%;
+  border-width: 3rem;
+  border-radius: 0.6rem;
+  border-color: black;
+  border-width: 0.3rem;
+  border-style: solid;
+  overflow: hidden;
+  box-shadow: 0.5rem 0.5rem;
+}
+
+.ProjectCard:hover {
+  background-color: #F2F2F2;
+  position: relative;
+  left: 0.5rem;
+  top: 0.5rem;
+  box-shadow: none;
+}
+
+.ProjectCard h1 {
+  margin: 0;
+  margin-left: 1%;
+  margin-top: 1%;
+  font-size: clamp(1.1rem, 2vw, 29rem);
+}
+
+.ProjectCard p {
+  margin: 0;
+  width: 98%;
+  font-size: clamp(0.7rem, 1.4vw, 18rem);
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+.CardImage {
+  width: 99%;
+  height: 65%;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  border-width: 0.1rem;
+  border-style: solid;
+  margin:auto;
+  background: gray;
+  overflow: hidden;
+}
+
+.CardImage img {
+  width: 100%;
+}
+
+#workExperience{
+  padding-top: 1rem;
+}
+
+#experiences {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 3rem 0 3rem 10%;
+}
+
+#experiences h3 {
+  font-size: clamp(1.3rem, 1.9vw, 29rem);
+  display: inline-block;
+  margin: 0;
+}
+
+#experiences h4 {
+  display: inline-block;
+  position: absolute;
+  padding-top: 0.4rem;
+  right: 10%;
+  margin: 0;
+}
+
+#experiences p{
+  font-size:  clamp(1.1rem, 1.7vw, 29rem);;
+}
