@@ -13,9 +13,10 @@ section {
 h1 {
   padding: 0;
   margin: 0;
-  margin-left: 3%;
+  padding-top: 0.4rem;
   line-height: 0.9;
   display: block;
+  text-align: center;
 }
 
 h2 {
@@ -24,13 +25,15 @@ h2 {
 }
 
 .GameTitleImage {
+  box-sizing: border-box;
   width: 100%;
-  margin-top: 1%;
+  margin-top: 1.4rem;
   border-style: solid;
   border-width: 0.3rem;;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   aspect-ratio: 3.6/1;
   overflow: hidden;
+  margin-bottom: 1.4rem;
 }
 
 img {
@@ -72,4 +75,63 @@ ul {
 li{
   padding: 1%;
   margin: 0;
+}
+
+/*VULTUR specific styling*/
+#VULTUR{
+  background-color: rgb(157, 102, 148);
+}
+
+#VULTUR h1{
+color: white;
+}
+
+#VULTUR .GameTitleImage{
+border-color: rgb(98, 59, 102);
+border-width: 0.2rem;
+}
+
+#VULTUR .InfoBlock {
+  border-color: rgb(98, 59, 102);
+  background-color: rgb(201, 156, 196);
+}
+
+
+/*TerminalVelocity specific styling*/
+#TerminalVelocity{
+  background-color: rgb(66, 0, 120);
+}
+
+#TerminalVelocity h1{
+color: white;
+}
+
+#TerminalVelocity .GameTitleImage{
+border-color: rgb(255, 172, 0);
+border-width: 0.2rem;
+}
+
+#TerminalVelocity .InfoBlock {
+  border-color: rgb(255, 172, 0);
+  background-color: rgb(159, 134, 209);
+}
+
+
+/*UrbanCrowdSimulation specific styling*/
+#UrbanCrowdSimulation{
+  background-color: rgb(79, 79, 79);
+}
+
+#UrbanCrowdSimulation h1{
+color: white;
+}
+
+#UrbanCrowdSimulation .GameTitleImage{
+border-color: rgb(155, 155, 155);
+border-width: 0.2rem;
+}
+
+#UrbanCrowdSimulation .InfoBlock {
+  background-color: rgb(219, 109, 109);
+  border-color: rgb(155, 155, 155);
 }
