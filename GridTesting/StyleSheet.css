@@ -1,0 +1,36 @@
+html, body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 2vmin;
+      background: rgba(0, 0, 0, 0.1);
+      background-image: url(https://ready.so/images/Sand-Texture.webp);
+}
+
+body {
+  margin: 50px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap:20px;
+  border: 10px solid blue;
+}
+
+.item{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  font-size: 35px;
+  font-weight: bold;
+  background-color: #febf03;
+}
+
+.item p {
+  margin: 0 0 5px 0;
+
+}

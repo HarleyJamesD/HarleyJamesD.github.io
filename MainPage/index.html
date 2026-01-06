@@ -9,22 +9,18 @@
 <body>
   <header>
     <nav>
-      <a href="ProjectsPage/projects.html">
+      <h2 id="NameButton">HARLEY JAMES DOOLAN</h2>
+      <a href="../ProjectsPage/projects.html">
         <button>Projects</button>
       </a>
-      <a href="ContactPage/contact.html">
+      <a href="../ContactPage/contact.html">
         <button>Contact</button>
       </a>
     </nav>
   </header>
 
-  <nav id="chapterList">
-    <ul>
-      <li>ABOUT ME</li>
-      <li>HIGHLIGHTS</li>
-      <li>EXPERIENCE</li>
-    </ul>
-  </nav>
+  <div id="TestBox"></div>
+
   <div id="sideLayout">
     <section id="aboutMe">
       <div id="myPicture">
@@ -39,34 +35,30 @@
     </section>
 
     <section id="highlightedProjects">
-      <div class="centredContent">
-        <div id="projectCardDeck">
-          <div class="ProjectCard">
-            <div class="CardImage"> 
-              <img src="VulturContent/VULTUR_SXSWPromo_Square.png">
-            </div>
-            <h1>VULTUR</h1>
-            <!-- <p>VULTUR is an atmospheric Mech FPS with Action RPG build creation. </p> -->
-          </div>
-
-          <div class="ProjectCard">
-            <div class="CardImage"> 
-              <img src="TerminalVelocityContent/tv_poster.jpg" style="margin-left:-10%; width: 110%;">
-            </div>
-            <h1>Terminal Velocity</h1>
-            <!-- <p>Interplanetary dodgeball, awarded "Best Party Game" for MQ 2024 Game Jam.</p> -->
-          </div>
-
-          <div class="ProjectCard">
-            <div class="CardImage"> 
-              <img src="CrowdWorkingOnRoadNoPathfinding.PNG" style="margin-left:-20%; margin-top: -10%; width: 130%;">
-            </div>
-            <h1>Crowd Simulation</h1>
-            <!-- <p>Research study into crowd simulations and perceived realism.</p> -->
-          </div>
+      <div class="ProjectCard" id="VULTURCard">
+        <div class="CardImage"> 
+          <img src="VulturContent/VULTUR_SXSWPromo_Square.png">
         </div>
+        <h1>VULTUR</h1>
+        <p>VULTUR is an atmospheric Mech FPS with Action RPG build creation. </p>
       </div>
-      
+      <button>View All Projects</button>
+
+      <div class="ProjectCard" id="TVCard">
+          <div class="CardImage"> 
+          <img src="TerminalVelocityContent/tv_poster.jpg" style="margin-left:-10%; width: 110%;">
+        </div>
+        <h1>Terminal Velocity</h1>
+        <p>Interplanetary dodgeball, awarded "Best Party Game" for MQ 2024 Game Jam.</p>
+      </div>
+
+      <div class="ProjectCard" id="CrowdCard">
+        <div class="CardImage"> 
+          <img src="CrowdWorkingOnRoadNoPathfinding.PNG" style="margin-left:-20%; margin-top: -10%; width: 130%;">
+        </div>
+        <h1>Crowd Simulation</h1>
+        <p>Research study into crowd simulations and perceived realism.</p>
+      </div>
     </section>
 
     <section id="workExperience">
@@ -82,6 +74,14 @@
       </div>
     </section>
   </div>
+
+  <nav id="chapterList">
+    <ul>
+      <li>ABOUT ME</li>
+      <li>HIGHLIGHTS</li>
+      <li>EXPERIENCE</li>
+    </ul>
+  </nav>
 
   <footer>
   <p>© 2025 Harley James Doolan</p>
