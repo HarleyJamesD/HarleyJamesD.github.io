@@ -108,27 +108,19 @@ h2{
 
 /*Highlighted projects*/
 #highlightedProjects{
-  background-color: green;
   height: 100vh;  
-}
-
-#grid{
-  height: 100%;
   display: grid;
   gap: 2%;
   column-gap: 4%;
-  grid-template-columns: 12fr 7fr;
+  grid-template-columns: 5fr 4fr;
   grid-template-rows: 1fr 1fr;
   box-sizing: border-box;
-  border: 3px solid black;    /* your debug border */
 }
 
 #VULTURCard,
 #TVCard,
 #CrowdCard{
   display: flex;
-  justify-content: center;    /* horizontal centering of the card */
-  align-items: center;        /* vertical centering of the card */
   overflow: hidden;           /* prevents any visual bleed */
 }
 
@@ -146,12 +138,28 @@ h2{
   align-items: end;
   justify-content: center;
   gap: 1rem;
-  max-height: 100%;   /* never exceed parent */
+  height: auto;
+  max-height: 90%;
   max-width: 100%;
 }
 
 #cardStack button {
   width: 92%;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  /*background-image: url(../images/Transparent-Texture.webp);*/
+  box-sizing: border-box;
+  color:black;
+
+  cursor:pointer;
+  transition:0.1s all ease;
+
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+
+  text-transform: uppercase;
+  font-size: clamp(0.7rem, 1.2vw, 10rem);
 }
 
 #TVCard     { 
@@ -189,15 +197,23 @@ h2{
   margin: 0;
   margin-left: 1%;
   margin-top: 1%;
-  font-size: clamp(1.1rem, 2vw, 29rem);
+  font-size: clamp(0.7rem, 1.2vw, 10rem);
+}
+
+.ProjectCard .CardBlurb {
+  margin: 0;
+  width: 98%;
+  max-height: 22%;
+  font-size: clamp(0.7rem, 1.2vw, 10rem);
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 100%;
+  scrollbar-width: thin; 
+  overflow-y: auto;
 }
 
 .ProjectCard p {
   margin: 0;
-  width: 98%;
-  font-size: clamp(0.7rem, 1.4vw, 18rem);
-  margin-left: 1%;
-  margin-top: 1%;
 }
 
 .CardImage {
@@ -215,6 +231,16 @@ h2{
 .CardImage img {
   width: 100%;
 }
+
+#VULTURCard .ProjectCard h1 {
+  font-size: clamp(1rem, 2.3vw, 30rem);;
+}
+
+#VULTURCard .ProjectCard p {
+  font-size: clamp(0.7rem, 1.3vw, 10rem);
+}
+
+
 
 /*Work Experience*/
 #workExperience{
