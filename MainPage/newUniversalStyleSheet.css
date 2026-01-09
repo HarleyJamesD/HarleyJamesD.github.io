@@ -101,7 +101,6 @@ header button {
 button:hover {
   border-style: solid;
   border-color: white;
-  border-width: 1px;
   font-weight: bold;
   /*box-shadow: inset 0px 0px 1rem rgba(255,255,255,0.65);
   color: lightgrey;*/

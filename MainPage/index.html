@@ -19,14 +19,12 @@
     </nav>
   </header>
 
-  <div id="TestBox"></div>
-
   <div id="sideLayout">
     <section id="aboutMe">
       <div id="myPicture">
         <img src="../Pictures/Professional Photo.JPG" style="margin-top:-12%;">
       </div>
-      <p id="aboutMeBlurb">I'm Harley, an aspiring game developer/designer with a strong interest in game mechanics and gameplay design. Currently, I am developing my portfolio by creating small projects in Unity using C#, focusing on improving my skill set, experience, and proficiency.</p>
+      <p id="aboutMeBlurb"><em>Welcome! This page is currently under development but feel free to have a look around.</em> I'm Harley, an aspiring game developer/designer with a strong interest in game mechanics and gameplay design. Currently, I am developing my portfolio by creating small projects in Unity using C#, focusing on improving my skill set, experience, and proficiency.</p>
       <svg class="shape" viewbox = "0 0 100 100">
         <circle cx="65" cy="23" r="22" fill="RGB(255,238,140)" stroke="transparent"/>
         <circle cx="30" cy="54" r="16" fill="RGB(255,238,140)" stroke="transparent"/>
@@ -39,21 +37,23 @@
           <div id="cardStack">
             <div class="ProjectCard">
               <div class="CardImage"> 
-                <img src="VulturContent/VULTUR_SXSWPromo_Square.png">
+                <img src="../VulturContent/VULTUR_SXSWPromo_Square.png">
               </div> 
               <h1>VULTUR</h1>
               <div class="CardBlurb">
                 <p>VULTUR is a gruesome atmospheric Mech FPS, with Action RPG build creation. Traverse through desolate ruins and embrace your purpose as a scavenger.</p>
               </div>
             </div>
-           <button>View All Projects</button>
+            <a href="../ProjectsPage/projects.html">
+              <button>View All Projects</button>
+            </a>
           </div>
         </div>
 
       <div id="TVCard">
         <div class="ProjectCard">
           <div class="CardImage"> 
-              <img src="TerminalVelocityContent/tv_poster.jpg" style="margin-left:-10%; width: 110%;">
+              <img src="../TerminalVelocityContent/tv_poster.jpg" style="margin-left:-10%; width: 110%;">
           </div>
           <h1>Terminal Velocity</h1>
           <div class="CardBlurb">
@@ -66,7 +66,7 @@
       <div id="CrowdCard">
         <div class="ProjectCard">
           <div class="CardImage"> 
-            <img src="CrowdWorkingOnRoadNoPathfinding.PNG" style="margin-left:-20%; margin-top: -10%; width: 130%;">
+            <img src="../CrowdWorkingOnRoadNoPathfinding.PNG" style="margin-left:-20%; margin-top: -10%; width: 130%;">
           </div>
           <h1>Crowd Simulation</h1>
           <div class="CardBlurb">
@@ -78,19 +78,36 @@
 
     <section id="workExperience">
       <div id="experiences">
-        <h3>Game Designer/Developer</h3>
-        <h4>Liminal VR - Internship</h4>
-        <p>Collaborated on a VR project for Liminal VR focused on meditation and physical therapy, gaining experience in immersive interaction design, optimisation, and tackling VR-specific challenges while guiding a beginner team through the development process.</p>
-        <br>
-        <h3>Brand Ambassador</h3>
-        <h4>Emissaries - Since 2021</h4>
-        <p>Through my work as a Brand Ambassador with companies such as Nintendo, Intel and Lego, I learned how to communicate clearly, adapt to different audiences, and ensure that people walk away with a positive experience. That same ability to understand and connect with players informs the way I approach game design and playtesting.</p>
-        <br>
+        <div class="experience">
+          <h3>Game Designer/Developer</h3>
+          <h4>Liminal VR - Internship</h4>
+          <p>During my internship, I helped design and develop a VR experience for Liminal VR, aimed at meditation and physical therapy. I gained hands-on experience in immersive interaction design, optimisation, and tackling VR-specific challenges. Guiding a beginner team, allowed me to strengthen my skills in communication, collaboration, iteration, and problem-solving.</p>
+        </div>
+
+        <div class="experience">
+          <h3>Brand Ambassador</h3>
+          <h4>Emissaries - Since 2021</h4>
+          <p>Through my work as a Brand Ambassador with companies such as Nintendo, Intel and Lego, I learned how to communicate clearly, adapt to different audiences, and ensure that people walk away with a positive experience. That same ability to understand and connect with players informs the way I approach game design and playtesting.</p>
+        </div>
+        
+        <div class="experience">
+          <h3>Team Member</h3>
+          <h4>Grill'd - 2021-2023</h4>
+          <p>Working in a fast-paced restaurant environment taught me the importance of clear communication and strong teamwork, both essential for maintaining an efficient workplace. It also sharpened my adaptability and problem-solving skills in high-pressure situations.</p>
+        </div>
+
+        <div class="experience">
+          <h3>Team Member</h3>
+          <h4>Kmart - 2023-2025</h4>
+          <p>At Kmart, I gained a solid understanding of inventory flow and retail logistics. I worked toward individual and team KPIs, building focus and accountability. Handling customer orders with care taught me the value of precision and responsibility.</p>
+        </div>
+
       </div>
     </section>
   </div>
 
   <nav id="chapterList">
+    <div id="chapterPill"></div>
     <ul>
       <li>ABOUT ME</li>
       <li>HIGHLIGHTS</li>
