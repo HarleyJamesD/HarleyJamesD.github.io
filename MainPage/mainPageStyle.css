@@ -81,7 +81,8 @@ h2{
 #chapterList li:hover {
   font-weight: 800;
   position: relative;
-  transform: translate(10%);
+  /*transform: translate(10%);*/
+  padding-left: 10%;
 }
 
 
@@ -238,6 +239,7 @@ a{
   font-size: clamp(0.7rem, 1.2vw, 10rem);
   /*font-family: "Roboto", sans-serif;
   font-weight: 400;*/
+  padding: 0.4rem;
 
   transition: all 0.3s ease-out 0s;
 }
@@ -248,6 +250,8 @@ a{
   padding-top: 1rem;
   padding-bottom: 1rem;
   transform: scale(1.05);
+  margin-top: -0.6rem;
+  margin-bottom: -0.6rem;
   font-weight: 800;
 }
 
@@ -266,6 +270,8 @@ a{
 }
 
 .ProjectCard {
+  cursor: none;
+
   aspect-ratio: 1/1.4;
   /* fit inside the grid cell */
   max-width: 92%;
