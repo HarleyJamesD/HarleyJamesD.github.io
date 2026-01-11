@@ -14,7 +14,7 @@ button {
   -moz-appearance: none;
   appearance: none;
   background: transparent;
-  font-family: system-ui, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -53,7 +53,7 @@ header button {
   color:black;
 
   cursor:pointer;
-  transition:0.1s all ease;
+  transition: all 0.3s ease-out 0s;
 
   border-style: solid;
   border-color: transparent;

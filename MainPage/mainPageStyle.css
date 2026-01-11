@@ -2,6 +2,10 @@
   --pill-height: 13vh; 
 }
 
+@font-face {
+  font-family: "Roboto", sans-serif;
+}
+
 h2{
   margin-left: 5%;
   font-size: clamp(1.8rem, 2.2vw, 29rem);
@@ -11,6 +15,7 @@ h2{
   position: fixed;
   top: 25vh;
   left: 7vw;
+  width: 30vw;
 
   height: 50vh;
 
@@ -22,6 +27,7 @@ h2{
 #chapterList ul {
   z-index: 50;
   position: relative;
+  right: 0;
 
   margin: 0;
   padding: 0;
@@ -41,7 +47,7 @@ h2{
 
 #chapterPill {
   position: absolute;
-  right: -10%;
+  right: 5vw;
   /*top: calc(0% + 0.5em - var(--pill-height)/2);*/
   /*top: calc(50% - var(--pill-height)/2);*/
   top: calc(100% - 0.5em - var(--pill-height)/2);
@@ -60,16 +66,28 @@ h2{
 }
 
 #chapterList li {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  user-select: none;
+  width: fit-content;
   margin-bottom: 0;
   transition: font-weight 0.3s ease, color 0.3s ease;
   cursor: pointer;
+  left: 0%;
+
+  transition: all 0.3s ease-in-out 0s;
+}
+
+#chapterList li:hover {
+  font-weight: 800;
+  position: relative;
+  transform: translate(10%);
 }
 
 
 /* Optional: Style for active chapter text */
 #chapterList li.active {
-  font-weight: 600;
-  color: #333;
+  transform: translate(10%);
 }
 
 
@@ -192,7 +210,7 @@ h2{
   flex-direction: column;
   align-items: end;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.4rem;
   height: auto;
   max-height: 90%;
   max-width: 100%;
@@ -210,24 +228,27 @@ a{
   box-sizing: border-box;
   box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
   color:black;
+  background-color: white;
 
   cursor:pointer;
-  transition:0.1s all ease;
-
-  border-style: solid;
   border-width: 0;
   border-radius: 1rem;
 
   text-transform: uppercase;
   font-size: clamp(0.7rem, 1.2vw, 10rem);
-  /*box-shadow: 0 -0.1vh 1.5vh -0.5vh rgba(0, 0, 0, 0.3) inset;*/
+  /*font-family: "Roboto", sans-serif;
+  font-weight: 400;*/
 
-  transition: border-color 0.3s ease-out 0s;
-  transition: font-weight 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
 }
 
 #cardStack button:hover {
   border-color: transparent;
+  /*Padding causes the parent to expand which is not what i want*/
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  transform: scale(1.05);
+  font-weight: 800;
 }
 
 #TVCard     { 
@@ -255,25 +276,34 @@ a{
 
   padding: 0.5rem 0.5rem 0.2rem 0.5rem;
   border-radius: 1rem;
-  border-color: black;
-  border-style: solid;
   border-width: 0rem;
   box-sizing: border-box;
   box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
+
+  background-color: white;
+
+  transition: all 0.3s ease-out 0s;
+}
+
+.ProjectCard:hover {
+  transform: scale(1.05);
+  position: relative;
+  z-index: 10;
 }
 
 .ProjectCard h1 {
   margin: 0;
   margin-left: 1%;
   margin-top: 1%;
-  font-size: clamp(0.7rem, 1.2vw, 10rem);
+  font-size: clamp(0.1rem, 1.4rem, 10rem);
 }
 
 .ProjectCard .CardBlurb {
+  user-select: none;
   margin: 0;
   width: 98%;
   max-height: 22%;
-  font-size: clamp(0.7rem, 1.2vw, 10rem);
+  font-size: clamp(0.7rem, 1rem, 10rem);
   margin-left: 1%;
   margin-top: 1%;
   margin-bottom: 100%;
@@ -302,11 +332,11 @@ a{
 }
 
 #VULTURCard .ProjectCard h1 {
-  font-size: clamp(1rem, 2.3vw, 30rem);;
+  font-size: clamp(1rem, 2.3rem, 30rem);;
 }
 
 #VULTURCard .ProjectCard p {
-  font-size: clamp(0.7rem, 1.3vw, 10rem);
+  font-size: clamp(0.3rem, 0.6vh + 0.6vw + 0.3rem, 2rem);
 }
 
 
@@ -321,12 +351,17 @@ a{
 }
 
 #experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+
+  cursor: ns-resize;
   box-sizing: border-box;
   width: 86%;
   max-height: 80%;
   overflow: -moz-scrollbars-vertical; 
   overflow-y: scroll;
-
+  background-color: white;
 
   /*border-color: black;*/
   /*border-style: solid;*/
@@ -334,7 +369,7 @@ a{
   border-width: 2px;
 
   box-shadow: 0 -10vh 10vh -15vh black inset;
-  padding-bottom: 5%;
+  padding: 6% 3% 6% 3%;
 }
 
 #experiences::before {
@@ -371,14 +406,19 @@ a{
   grid-template-areas: 
   "JobTitle JobTitle Company"
   "Blurb    Blurb    Blurb";
-  margin: 2%;
+  /*margin-bottom: 5%;*/
 }
 
 #experiences h3 {
+  user-select: none;
   grid-area: JobTitle;
+
   align-self: end;
-  font-size: clamp(1.3rem, 1.8vw, 29rem);
+  text-transform: uppercase;
+  font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+  font-weight: 600;
   margin: 0;
+  font-style: italic;
 }
 
 #experiences h4 {
@@ -388,14 +428,19 @@ a{
   display: inline-block;
   margin: 0;
   margin-bottom: 1%;
+  text-transform: uppercase;
+  font-size: clamp(0.4rem, 1vw + 0.4rem, 1.2rem);
+  font-weight: 600;
+  /*font-style: italic;*/
 }
 
 #experiences p{
+  user-select: none;
   grid-area: Blurb;
   margin: 1%;
   margin-right: 0;
   align-self: start;
-  font-size:  clamp(1rem, 1.4vw, 23rem);;
+  font-size:  clamp(0.4rem, 0.8vw + 0.4rem, 3rem);
 }
 
 @media (max-width: 1200px) {
