@@ -1,3 +1,7 @@
+:root {
+  --pill-height: 13vh; 
+}
+
 h2{
   margin-left: 5%;
   font-size: clamp(1.8rem, 2.2vw, 29rem);
@@ -5,40 +9,71 @@ h2{
 
 #chapterList {
   position: fixed;
-  display: flex;
   top: 25vh;
   left: 7vw;
-}
 
-#chapterPill {
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 50vh;
 
-  width: 100%;
-  height: 6rem;
+  /*display: flex;*/
+  font-size: clamp(3rem, 2.2vw, 29rem);
 
-  transform: translate(0, -50%);
-
-  background-color: lightsalmon;
-  border-radius: 999px;
-
-  z-index: 0;           /* behind text */
 }
 
 #chapterList ul {
   z-index: 50;
+  position: relative;
+
   margin: 0;
   padding: 0;
-  
   list-style-type: none;
-  font-size: clamp(3rem, 2.2vw, 29rem);
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /*font-size: clamp(3rem, 2.2vw, 29rem);*/
   font-weight: 500;
+  line-height: 1;
+}
+
+#chapterPill {
+  position: absolute;
+  right: -10%;
+  /*top: calc(0% + 0.5em - var(--pill-height)/2);*/
+  /*top: calc(50% - var(--pill-height)/2);*/
+  top: calc(100% - 0.5em - var(--pill-height)/2);
+  
+  width: 80vw;
+  height: var(--pill-height);
+  /*transform: translate(-50%);*/
+  
+  background-color: lightsalmon;
+  border-radius: 999px;
+  
+  z-index: 0;
+  
+  /* Smooth transitions when position changes */
+  transition: top 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 #chapterList li {
-  margin-bottom: 2em;
+  margin-bottom: 0;
+  transition: font-weight 0.3s ease, color 0.3s ease;
+  cursor: pointer;
 }
+
+
+/* Optional: Style for active chapter text */
+#chapterList li.active {
+  font-weight: 600;
+  color: #333;
+}
+
+
+
 
 #sideLayout {
   display: flex;
@@ -140,7 +175,8 @@ h2{
 #TVCard,
 #CrowdCard{
   display: flex;
-  overflow: hidden;           /* prevents any visual bleed */
+  min-height: 100%;
+  overflow: visible;           /* prevents any visual bleed */
 }
 
 #VULTURCard { 
@@ -172,13 +208,14 @@ a{
   backdrop-filter: blur(2px);
   /*background-image: url(../images/Transparent-Texture.webp);*/
   box-sizing: border-box;
+  box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
   color:black;
 
   cursor:pointer;
   transition:0.1s all ease;
 
   border-style: solid;
-  border-color: black;
+  border-width: 0;
   border-radius: 1rem;
 
   text-transform: uppercase;
@@ -220,9 +257,9 @@ a{
   border-radius: 1rem;
   border-color: black;
   border-style: solid;
-  border-width: 0.1rem;
-  overflow: hidden;
+  border-width: 0rem;
   box-sizing: border-box;
+  box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
 }
 
 .ProjectCard h1 {
@@ -253,7 +290,7 @@ a{
   height: 65%;
   border-radius: 0.8rem;
   box-sizing: border-box;
-  border-width: 0.1rem;
+  border-width: 0rem;
   border-style: solid;
   margin:auto;
   background: gray;
@@ -287,7 +324,9 @@ a{
   box-sizing: border-box;
   width: 86%;
   max-height: 80%;
-  overflow-y: auto;
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+
 
   /*border-color: black;*/
   /*border-style: solid;*/
@@ -338,7 +377,7 @@ a{
 #experiences h3 {
   grid-area: JobTitle;
   align-self: end;
-  font-size: clamp(1.3rem, 1.9vw, 29rem);
+  font-size: clamp(1.3rem, 1.8vw, 29rem);
   margin: 0;
 }
 
@@ -356,7 +395,7 @@ a{
   margin: 1%;
   margin-right: 0;
   align-self: start;
-  font-size:  clamp(1.1rem, 1.7vw, 29rem);;
+  font-size:  clamp(1rem, 1.4vw, 23rem);;
 }
 
 @media (max-width: 1200px) {
