@@ -5,7 +5,8 @@
   <title>Harley Portfolio</title>
   <link href="newUniversalStyleSheet.css" rel="stylesheet">
   <link href="mainPageStyle.css" rel="stylesheet">
-
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
+  <script src="mainPage.js"></script>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
@@ -29,9 +30,9 @@
       <div id="myPicture">
         <img src="../Pictures/Professional Photo.JPG" style="margin-top:-12%;">
       </div>
-      <p id="aboutMeBlurb"><em>Welcome! This page is currently under development but feel free to have a look around.</em> I'm Harley, an aspiring game developer/designer with a strong interest in game mechanics and gameplay design. Currently, I am developing my portfolio by creating small projects in Unity using C#, focusing on improving my skill set, experience, and proficiency.</p>
+      <p id="aboutMeBlurb">I'm Harley, an aspiring game developer/designer with a strong interest in game mechanics and gameplay design. Currently, I am developing my portfolio by creating small projects in Unity using C#, focusing on improving my skill set, experience, and proficiency.</p>
       <svg class="shape" viewbox = "0 0 100 100">
-        <circle cx="65" cy="23" r="22" fill="RGB(255,238,140)" stroke="transparent"/>
+        <circle cx="65" cy="28" r="22" fill="RGB(255,238,140)" stroke="transparent"/>
         <circle cx="30" cy="54" r="16" fill="RGB(255,238,140)" stroke="transparent"/>
         <circle cx="43" cy="75" r="11" fill="RGB(255,238,140)" stroke="transparent"/>
       </svg> 
@@ -110,7 +111,7 @@
     </section>
   </div>
 
-  <nav id="chapterList">
+  <nav id="chapterList" class="normal-click">
     <div id="chapterPill"></div>
     <ul>
       <li>ABOUT ME</li>
