@@ -3,75 +3,127 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Harley Portfolio</title>
-  <link href="UniversalStyleSheet.css" rel="stylesheet">
-  <link href="MainPage/oldMainPageStyle.css" rel="stylesheet">
+  <link href="MainPage/newUniversalStyleSheet.css" rel="stylesheet">
+  <link href="MainPage/mainPageStyle.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
+  <script src="MainPage/mainPage.js"></script>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+
 </head>
 <body>
-  <header class="smallerHeader">
-    <h1>Harley James Doolan</h1>
+  <div id="loadingScreen">
+    <h1>HARLEY JAMES DOOLAN</h1>
+    <div class="spinner"></div>
+  </div>
+
+  <header>
     <nav>
-      <a href="ProjectsPage/projects.html">
+      <h2 id="NameButton">HARLEY JAMES DOOLAN</h2>
+      <a href="../ProjectsPage/projects.html">
         <button>Projects</button>
       </a>
-      <a href="ContactPage/contact.html">
-        <button>Contact Me</button>
+      <a href="../ContactPage/contact.html">
+        <button>Contact</button>
       </a>
     </nav>
   </header>
 
-  <section id="aboutMe">
-    <a href="MainPage/newIndex.html" id="myPicture">
-        <img src="Pictures/Professional Photo.JPG">
-    </a>
-    
-    <div id="aboutMeBlurb">
-      <h2>About Me</h2>
-      <p>Hello! I'm Harley, an aspiring game developer/designer with a strong interest in game mechanics and gameplay design. Currently, I am developing my portfolio by creating small projects in Unity using C#, focusing on improving my skill set, experience, and proficiency.</p>
-    </div>
-  </section>
-
-  <section id="highlightedProjects">
-    <h2>Highlighted Projects</h2>
-    <div id="projectCardDeck">
-      <div class="ProjectCard">
-        <div class="CardImage"> 
-          <img src="VulturContent/VULTUR_SXSWPromo_Square.png">
-        </div>
-        <h1>VULTUR</h1>
-        <p>VULTUR is an atmospheric Mech FPS with Action RPG build creation. </p>
+  <div id="sideLayout">
+    <section id="aboutMe">
+      <div id="myPicture">
+        <img src="Pictures/Professional Photo.JPG" style="margin-top:-12%;">
       </div>
+      <p id="aboutMeBlurb">I'm Harley, an aspiring game developer/designer with a strong interest in game mechanics and gameplay design. Currently, I am developing my portfolio by creating small projects in Unity using C#, focusing on improving my skill set, experience, and proficiency.</p>
+      <svg class="shape" viewbox = "0 0 100 100">
+        <circle cx="65" cy="33" r="21" fill="RGB(255,238,140)" stroke="transparent"/>
+        <circle cx="30" cy="54" r="16" fill="RGB(255,238,140)" stroke="transparent"/>
+        <circle cx="43" cy="75" r="11" fill="RGB(255,238,140)" stroke="transparent"/>
+      </svg> 
+    </section>
 
-      <div class="ProjectCard">
-        <div class="CardImage"> 
-          <img src="TerminalVelocityContent/tv_poster.jpg" style="margin-left:-10%; width: 110%;">
+    <section id="highlightedProjects">
+        <div id="VULTURCard">
+          <div id="cardStack">
+            <div class="ProjectCard">
+              <div class="CardImage"> 
+                <img src="VulturContent/VULTUR_SXSWPromo_Square.png">
+              </div> 
+              <h1>VULTUR</h1>
+              <div class="CardBlurb">
+                <p>VULTUR is a gruesome atmospheric Mech FPS, with Action RPG build creation. Traverse through desolate ruins and embrace your purpose as a scavenger.</p>
+              </div>
+            </div>
+            <a href="../ProjectsPage/projects.html">
+              <button>View All Projects</button>
+            </a>
+          </div>
         </div>
-        <h1>Terminal Velocity</h1>
-        <p>Interplanetary dodgeball, awarded "Best Party Game" for MQ 2024 Game Jam.</p>
-      </div>
 
-      <div class="ProjectCard">
-        <div class="CardImage"> 
-          <img src="CrowdWorkingOnRoadNoPathfinding.PNG" style="margin-left:-20%; margin-top: -10%; width: 130%;">
+      <div id="TVCard">
+        <div class="ProjectCard">
+          <div class="CardImage"> 
+              <img src="TerminalVelocityContent/tv_poster.jpg" style="margin-left:-10%; width: 110%;">
+          </div>
+          <h1>Terminal Velocity</h1>
+          <div class="CardBlurb">
+            <p>Interplanetary dodgeball, awarded "Best Party Game" for MQ 2024 Game Jam. </p>
+          </div>
+          
         </div>
-        <h1>Crowd Simulation</h1>
-        <p>Research study into crowd simulations and perceived realism.</p>
       </div>
-    </div>
-  </section>
+      
+      <div id="CrowdCard">
+        <div class="ProjectCard">
+          <div class="CardImage"> 
+            <img src="CrowdWorkingOnRoadNoPathfinding.PNG" style="margin-left:-20%; margin-top: -10%; width: 130%;">
+          </div>
+          <h1>Crowd Simulation</h1>
+          <div class="CardBlurb">
+            <p>Research study into crowd simulations and perceived realism.</p>
+          </div>
+        </div> 
+      </div>  
+    </section>
 
-  <section id="workExperience">
-    <h2>Work Experience</h2>
-    <div id="experiences">
-      <h3>Game Designer/Developer</h3>
-      <h4>Liminal VR - Internship</h4>
-      <p>Collaborated on a VR project for Liminal VR focused on meditation and physical therapy, gaining experience in immersive interaction design, optimisation, and tackling VR-specific challenges while guiding a beginner team through the development process.</p>
-      <br>
-      <h3>Brand Ambassador</h3>
-      <h4>Emissaries - Since 2021</h4>
-      <p>Through my work as a Brand Ambassador with companies such as Nintendo, Intel and Lego, I learned how to communicate clearly, adapt to different audiences, and ensure that people walk away with a positive experience. That same ability to understand and connect with players informs the way I approach game design and playtesting.</p>
-      <br>
-    </div>
-  </section>
+    <section id="workExperience">
+      <div id="experiences">
+        <div class="experience">
+          <h3>Game Designer/Developer</h3>
+          <h4>Liminal VR - Internship</h4>
+          <p>During my internship, I helped design and develop a VR experience for Liminal VR, aimed at meditation and physical therapy. I gained hands-on experience in immersive interaction design, optimisation, and tackling VR-specific challenges. Guiding a beginner team, allowed me to strengthen my skills in communication, collaboration, iteration, and problem-solving.</p>
+        </div>
+
+        <div class="experience">
+          <h3>Brand Ambassador</h3>
+          <h4>Emissaries - Since 2021</h4>
+          <p>Through my work as a Brand Ambassador with companies such as Nintendo, Intel and Lego, I learned how to communicate clearly, adapt to different audiences, and ensure that people walk away with a positive experience. That same ability to understand and connect with players informs the way I approach game design and playtesting.</p>
+        </div>
+        
+        <div class="experience">
+          <h3>Team Member</h3>
+          <h4>Grill'd - 2021-2023</h4>
+          <p>Working in a fast-paced restaurant environment taught me the importance of clear communication and strong teamwork, both essential for maintaining an efficient workplace. It also sharpened my adaptability and problem-solving skills in high-pressure situations.</p>
+        </div>
+
+        <div class="experience">
+          <h3>Team Member</h3>
+          <h4>Kmart - 2023-2025</h4>
+          <p>At Kmart, I gained a solid understanding of inventory flow and retail logistics. I worked toward individual and team KPIs, building focus and accountability. Handling customer orders with care taught me the value of precision and responsibility.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <nav id="chapterList" class="normal-click">
+    <div id="chapterPill"></div>
+    <ul>
+      <li>ABOUT ME</li>
+      <li>HIGHLIGHTS</li>
+      <li>EXPERIENCE</li>
+    </ul>
+  </nav>
 
   <footer>
   <p>© 2025 Harley James Doolan</p>
