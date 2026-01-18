@@ -115,19 +115,20 @@ h2{
   margin-bottom: 0;
   transition: font-weight 0.3s ease, color 0.3s ease;
   cursor: pointer;
-  transform: translateX(0%); 
+  transform: translateX(-10%); 
   transition: all 0.3s ease-in-out 0s;
   white-space: nowrap; 
 }
 
 #chapterList li.chapterSelected {
-  transform: translateX(15%); 
+  transform: translateX(10%); 
   font-weight: 800;
   position: relative;
+  font-size: clamp(1rem, 1.6rem + 3vw, 20rem);
 }
 
 #chapterList.normal-click li:hover {
-  transform: translateX(15%); 
+  transform: translateX(10%); 
   font-weight: 400;
 }
 

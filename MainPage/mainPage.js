@@ -39,9 +39,9 @@ $(document).ready(function(){
 	
 
 	const topPositions = [
-		'calc(0% + 0.5em - var(--pill-height)/2)',
+		'calc(0% + 0.6em - var(--pill-height)/2)',
       	'calc(50% - var(--pill-height)/2)',
-      	'calc(100% - 0.5em - var(--pill-height)/2)'
+      	'calc(100% - 0.6em - var(--pill-height)/2)'
 	];
 	chapterSelect(0, true);
 	
@@ -74,7 +74,7 @@ $(document).ready(function(){
 
 		if(shouldScroll){
 			$('html, body').stop(true, false);
-			
+
 			var selectedSection = $("#sideLayout").children().eq(selectedChapterIndex);
 			var elementTop = selectedSection.offset().top;
 			var elementHeight = selectedSection.outerHeight();
