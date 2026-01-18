@@ -39,9 +39,9 @@ $(document).ready(function(){
 	
 
 	const topPositions = [
-		'calc(0% + 0.6em - var(--pill-height)/2)',
+		'calc(0% + 0.5em - var(--pill-height)/2)',
       	'calc(50% - var(--pill-height)/2)',
-      	'calc(100% - 0.6em - var(--pill-height)/2)'
+      	'calc(100% - 0.5em - var(--pill-height)/2)'
 	];
 	chapterSelect(0, true);
 	
