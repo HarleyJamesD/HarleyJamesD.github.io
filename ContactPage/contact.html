@@ -3,36 +3,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Harley Portfolio</title>
-  <link href="../UniversalStyleSheet.css" rel="stylesheet">
+  <link href="../newUniversalStyleSheet.css" rel="stylesheet">
   <link href="contactStyle.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
+  <script src="contactPageScript.js"></script>
 </head>
 <body>
-  <header class="smallerHeader">
-    <h1>Harley James Doolan</h1>
+  <div id="loadingScreen">
+    <h1>HARLEY JAMES DOOLAN</h1>
+    <div class="spinner"></div>
+  </div>
+
+  <header>
     <nav>
-      <a href="../index.html">
-        <button>Home</button>
+      <h2 id="NameButton">HARLEY JAMES DOOLAN</h2>
+      <a href="../Index.html">
+        <button>Portfolio</button>
       </a>
       <a href="../ProjectsPage/projects.html">
         <button>Projects</button>
       </a>
     </nav>
   </header>
+
+  <h1 id="title">
+    <span>CO</span>
+    <span>NT</span>
+    <span>AC</span>
+    <span>T</span>
+    <span>
+      <a href="../Index.html">ME</a>
+    </span>
+  </h1>
+
   <section id="socials">
-    <div class="socialMedia">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg">
-      <h1>X aka Twitter</h1>
-      <a href="https://x.com/HarleyJGames">Link To Twitter</a>
-    </div>
-    <div class="socialMedia">
+    <a href="https://www.linkedin.com/in/harley-doolan-54a1ba209/" class="socialMedia">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png">
       <h1>LinkedIn</h1>
-      <a href="https://www.linkedin.com/in/harley-doolan-54a1ba209/">Link To LinkedIn</a>
-    </div>
-    <div class="socialMedia">
+    </a>
+    <a href="https://x.com/HarleyJGames" class="socialMedia">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg">
+      <h1>X (Twitter)</h1>
+    </a>
+    <a href="https://github.com/HarleyJamesD" class="socialMedia">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg">
+      <h1>GitHub</h1>
+    </a>
+    <a href="https://harley-james.itch.io/" class="socialMedia">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAwHdi4cXc9MOalzOv92xWt1IdfLGPCEPA0g&s">
       <h1>itch.io</h1>
-      <a href="https://harley-james.itch.io/">Link To My Itch</a>
-    </div>
+    </a>
   </section>
+
+  <div id="blur"></div>
 </body>
