@@ -41,6 +41,12 @@ header nav {
   padding: ;
 }
 
+img {
+  /*image-rendering: optimizeSpeed;*/
+  image-rendering: -webkit-optimize-contrast;
+
+}
+
 header button {
   position: relative;
   border-radius:0.4em;

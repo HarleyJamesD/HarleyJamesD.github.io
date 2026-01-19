@@ -28,14 +28,16 @@
   /*font-weight: 300;*/
   font-variation-settings: 'wdth' 100, 'wght' 300; 
   user-select: none;
+  will-change: transform;
 }
 
 #title span {
   animation: wave 10s ease-in-out infinite;
+  will-change: transform;
 }
 
 #title span:nth-child(1) {
-  padding-left: 0;
+  /*padding-left: 0;*/
   animation-delay: 0s;
 }
 
@@ -118,12 +120,13 @@
 	border-radius: 5%;
 	border-width: 0rem;
 	box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
-
+	will-change: transform;
 	transition: all 0.3s ease-out 0s;
 }
 
 .socialMedia:hover {
   transform: scale(1.05);
+  transform: rotate(5deg);
   position: relative;
   z-index: 10;
 }

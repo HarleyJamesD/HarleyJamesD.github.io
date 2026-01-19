@@ -23,19 +23,24 @@ $(document).ready(function(){
 		$('#loadingScreen').hide();
 	}
 
-	var defaultZ = 1;
+	let hoverTimeout;
+	let defaultZ = 1;
 	$('.socialMedia').hover(function(){
 		$('.socialMedia').stop(true, false); // Stop all queued animations
-
 		$(this).addClass("elevated");
 
-		setTimeout(function(){
+		const randomRotation = Math.random() < 0.5 ? -3 : 3;
+    $(this).css('transform', `scale(1.05) rotate(${randomRotation}deg)`);
+
+		clearTimeout(hoverTimeout);
+		hoverTimeout = setTimeout(function(){
 			$('#blur').stop(true, false).fadeIn(500);
 		}, 150);
-		
-		
+
 	}, function(){
 		$(this).removeClass("elevated");
+		$(this).css('transform', '');
+		clearTimeout(hoverTimeout);
 		$('#blur').stop(true, false).fadeOut(100);
 	});
 })
