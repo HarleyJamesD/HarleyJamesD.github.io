@@ -116,4 +116,49 @@ $(document).ready(function(){
 	    }, 350);
 	});
 
+
+  const $experiences = $('#experiences');
+  
+  // Create blur overlay element
+  const $blurOverlay = $('<div class="blur-overlay"></div>');
+  $experiences.append($blurOverlay);
+  
+  $experiences.on('scroll', function() {
+    const scrollTop = $(this).scrollTop();
+    const scrollHeight = $(this)[0].scrollHeight;
+    const clientHeight = $(this).height();
+    const maxScroll = scrollHeight - clientHeight;
+    
+    // Calculate scroll percentage (0 at top, 1 at bottom)
+    const scrollPercent = maxScroll > 0 ? scrollTop / maxScroll : 0;
+    
+    // Calculate opacity for top and bottom blurs (0 to 1)
+    const topBlurOpacity = Math.min(scrollPercent * 2, 1);
+    const bottomBlurOpacity = Math.max(1 - (scrollPercent * 2), 0);
+    
+    // Update the blur overlay mask
+    const blurMask = `
+      linear-gradient(
+        to bottom,
+        black ${topBlurOpacity * 15}%,
+        transparent ${15 + (topBlurOpacity * 5)}%,
+        transparent ${85 - (bottomBlurOpacity * 5)}%,
+        black ${100 - (bottomBlurOpacity * 15)}%
+      )
+    `;
+    
+    $blurOverlay.css({
+      'mask-image': blurMask,
+      '-webkit-mask-image': blurMask
+    });
+    
+    // Update box-shadow for the darkening effect
+    const topShadow = `0 10vh 10vh -15vh rgba(0, 0, 0, ${topBlurOpacity * 0.5}) inset`;
+    const bottomShadow = `0 -10vh 10vh -15vh rgba(0, 0, 0, ${bottomBlurOpacity * 0.5}) inset`;
+    
+    $(this).css('box-shadow', `${topShadow}, ${bottomShadow}`);
+  });
+  
+  // Trigger initial state
+  $experiences.trigger('scroll');
 })

@@ -1,95 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap');
 html, body {
       font-family: system-ui, sans-serif;
       margin: 0;
       padding: 0;
       /*box-sizing: border-box;*/
       font-size: 2vmin;
-      background: white;
+      background: rgb(0, 0, 0);
+      /*background-color: darkred;*/
+    background-image: url(https://ready.so/images/Sand-Texture.webp);
 }
 
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background: transparent;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 
 header {
-  z-index: 900;
-  position: sticky;
-  top: 0;
-  background: black;
-  color: #fff;
-  padding: 0 5vw;
+  position: fixed;
   margin: 0;
-  text-align: center;
-  overflow: auto;
-  transition:0.2s all ease;
-}
-
-.smallerHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 7vh;
-  padding-bottom: 0.3rem 5vw;
-  padding-top: -10vw;
-}
-
-/*@media (max-width: 800px) {
-  .smallerHeader {
-    flex-direction: column;
-  }
-}*/
-
-header:hover{
-  box-shadow: 0px 0px 2vw rgba(0,0,0,0.5);
-}
-
-header h1 { 
-  display: inline-block;
-  box-sizing: border-box;
-  font-size: 2.5rem;
-  padding: 0.8em 0 0.4em 0;
-  margin: 0;
-}
-
-.smallerHeader h1 {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  font-size: clamp(1.8rem, 10vw - 6rem, 2.3rem);
-
-  position: relative;
-  top: -0.07rem;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  border-radius: 1em;
+  margin: 1em;
+  padding: 0.2em;
 }
 
 header nav {
   display: flex;
   margin: 0;
   padding: 0;
-  justify-content: center;
-  gap: 1em;
+  gap: 0.5em;
+  align-items: center;
+  /*margin: 1em;*/
+  padding: ;
 }
 
+img {
+  /*image-rendering: optimizeSpeed;*/
+  image-rendering: -webkit-optimize-contrast;
+
+}
 
 header button {
   position: relative;
   border-radius:0.4em;
-  position:relative;
-  background:rgba(255,255,255,0); 
-  padding: 0.5em;
-  margin: 0 0 0.35em 0;
-  width: 8em;
-  box-shadow:0px 0px 0px 0px #B8B8B8;
+  padding: 0.4em;
+  width: 7em;
+  height: 100%;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  /*background-image: url(../images/Transparent-Texture.webp);*/
   box-sizing: border-box;
   font-size : clamp(1.4rem, 1vw + 0.5vh, 2rem);
-  font-weight: 300;
-  color:#777;
+  color:black;
 
   cursor:pointer;
-  transition:0.1s all ease;
+  transition: all 0.3s ease-out 0s;
 
   border-style: solid;
   border-color: transparent;
@@ -98,42 +70,94 @@ header button {
   text-transform: uppercase;
 }
 
-.smallerHeader button {
-  font-size: clamp(1.2rem, 8vw - 6rem, 1.9rem);
-  padding: 0.3rem 0 0.3rem 0;
-  width: 8em;
-  margin: auto;
+/* Loading Screen */
+#loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#loadingScreen.hidden {
+  display: none;
+}
+
+#loadingScreen h1 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  color: white;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top-color: lightsalmon;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#NameButton{
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.2vw, 1.6rem);
+  line-height: 1.1;
+  max-width: 14ch; /* OPTIONAL but helpful */
+  flex: 0 0 auto;
+  margin: 0;
+  height: 100%;
 }
 
   @media (max-width: 600px) {
-    .smallerHeader button {
-      height: 4em;
-      width: 9em;
+    header {
+      width: 100%;
     }
-
+    header nav{
+      /*margin-right: 20vw;*/
+      justify-content: space-between;
+    }
+    a {
+      width: 35vw;
+    }
     header button {
-      height: 3.5em;
-      width: 9em;
+      width: 100%;
+      height: 100%;
+    }
+    #NameButton{
+      max-width: 6ch;
+      flex: 0 0 auto;
+      text-align: left;
+      width: 100%;
     }
 
-    header nav {
-      gap: 2.3rem;
-    }
   }
 
-header button:hover {
+button:hover {
   border-style: solid;
   border-color: white;
-  border-width: 1px;
   font-weight: bold;
-  box-shadow: inset 0px 0px 1rem rgba(255,255,255,0.65);
-  color: lightgrey;
+  /*box-shadow: inset 0px 0px 1rem rgba(255,255,255,0.65);
+  color: lightgrey;*/
 }
 
-header button:active{
+button:active{
   color: white;
   background: rgba(255,255,255,0.2); 
-  box-shadow: inset 0px 0px 1rem rgba(0,0,0,0.5);
+  /*box-shadow: inset 0px 0px 1rem rgba(0,0,0,0.5);*/
 }
 
 footer {

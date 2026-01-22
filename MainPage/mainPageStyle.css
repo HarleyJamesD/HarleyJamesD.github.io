@@ -101,9 +101,6 @@ section {
   font-weight: 400;
 }
 
-/*#chapterList.alternate-click li:hover {
-  font-weight: 400;
-}*/
 
 #sideLayout {
   display: flex;
@@ -124,16 +121,16 @@ section {
 #aboutMe {
   position: relative;
   /*margin-top: 5vh;*/
-  padding-top: 10vh;
   display: flex;
-  gap: 1vh;
+  gap: 2vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 #myPicture {
-  width: 38%;
+  max-width: 38%;
+  max-height: 50vh;
   aspect-ratio: 1 / 1;
   padding: 0;
   box-sizing: border-box;
@@ -164,6 +161,7 @@ section {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   z-index: 2;
+  text-align: justify;
   /*Maybe ^?*/
 }
 
@@ -345,67 +343,95 @@ a{
 }
 
 
-
-
-
 /*Work Experience*/
 #workExperience{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  gap: 3vh;
   /*background-color: red;*/
+}
+
+#universityExperience {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  gap: 1vw;
+  background-color: white;
+  width: 86%;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  transition: all 0.3s ease-out 0s;
+}
+
+#universityExperience:hover {
+  transform: scale(1.05);
+  position: relative;
+  z-index: 10;
+}
+
+#uniLogoFrame {
+  aspect-ratio: 1/1;
+  min-width: 20%;
+  max-width: 20%;
+  margin: auto;
+  padding: 1rem;
+  padding-right: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+#uniLogoFrame img {
+  width: 100%;
+}
+
+#uniText {
+  padding: 1rem;
+  margin: auto;
+}
+
+#uniText h3 {
+  /*text-transform: uppercase;*/
+  font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  margin: 0;
+}
+
+#uniText h4 {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 1%;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: clamp(0.3rem, 1vw + 0.3rem, 1.2rem);
+  font-weight: 400;
+}
+
+#uniText p {
+  align-self: start;
+  /*text-align: justify;*/
+  font-size:  clamp(0.4rem, 0.8vw + 0.4rem, 3rem);
+  user-select: none;
 }
 
 #experiences {
   display: flex;
   flex-direction: column;
-  gap: 5vh;
-
+  gap: 4vh;
   cursor: ns-resize;
   box-sizing: border-box;
   width: 86%;
-  max-height: 80%;
+  min-height: 5rem;
+  max-height: 50%;
   overflow: -moz-scrollbars-vertical; 
   overflow-y: scroll;
   background-color: white;
-
-  /*border-color: black;*/
-  /*border-style: solid;*/
-  border-radius: 2%;
+  border-radius: 1rem;
   border-width: 2px;
-
   box-shadow: 0 -10vh 10vh -15vh black inset;
-  padding: 6% 3% 6% 3%;
-}
-
-#experiences::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-
-  mask-image: linear-gradient(
-    to bottom,
-    transparent, 
-    transparent,
-    transparent,
-    transparent,
-    black
-  );
-
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent, 
-    transparent,
-    transparent,
-    transparent,
-    black
-  );
+  padding: 3%;
 }
 
 .experience {
