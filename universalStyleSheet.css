@@ -17,8 +17,23 @@ button {
   appearance: none;
   background: transparent;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
 }
+
+button:hover {
+  border-style: solid;
+  border-color: white;
+  font-weight: bold;
+  /*box-shadow: inset 0px 0px 1rem rgba(255,255,255,0.65);
+  color: lightgrey;*/
+}
+
+button:active{
+  color: white;
+  background: rgba(255,255,255,0.2); 
+  /*box-shadow: inset 0px 0px 1rem rgba(0,0,0,0.5);*/
+}
+
 
 header {
   position: fixed;
@@ -68,7 +83,14 @@ header button {
   border-width: 1px;
 
   text-transform: uppercase;
+
+  font-variation-settings: 'wdth' 100, 'wght' 450;
 }
+
+header button:hover{
+  font-variation-settings: 'wdth' 150, 'wght' 750;
+}
+
 
 /* Loading Screen */
 #loadingScreen {
@@ -113,7 +135,7 @@ header button {
 #NameButton{
   display: block;
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
   font-size: clamp(1.1rem, 1.2vw, 1.6rem);
   line-height: 1.1;
   max-width: 14ch; /* OPTIONAL but helpful */
@@ -146,19 +168,6 @@ header button {
 
   }
 
-button:hover {
-  border-style: solid;
-  border-color: white;
-  font-weight: bold;
-  /*box-shadow: inset 0px 0px 1rem rgba(255,255,255,0.65);
-  color: lightgrey;*/
-}
-
-button:active{
-  color: white;
-  background: rgba(255,255,255,0.2); 
-  /*box-shadow: inset 0px 0px 1rem rgba(0,0,0,0.5);*/
-}
 
 footer {
   margin: auto;
