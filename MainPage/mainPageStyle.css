@@ -1,5 +1,5 @@
 :root {
-  --pill-height: 13vh; 
+  --pill-height: 20vh; 
 }
 
 @font-face {
@@ -56,7 +56,7 @@ section {
 
 #chapterPill {
   position: absolute;
-  right: -23%;
+  right: -25%;
   top: calc(0% + 0.5em - var(--pill-height)/2);
   
   width: 80vw;
@@ -65,7 +65,7 @@ section {
   
   /*background-color: lightsalmon;*/
   background-color: #FFC94B;
-  border-radius: 999px;
+  border-radius: var(--pill-height);
   
   z-index: 0;
   
@@ -419,6 +419,7 @@ a{
 #experiences {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 4vh;
   cursor: ns-resize;
   box-sizing: border-box;
