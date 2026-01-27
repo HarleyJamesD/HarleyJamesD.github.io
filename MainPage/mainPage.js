@@ -1,10 +1,10 @@
 (function() {
-  const lastVisit = sessionStorage.getItem('pageLoaded');
+  const LAST_VISIT = sessionStorage.getItem('pageLoaded');
   const now = Date.now();
   const fiveMinutes = 5 * 60 * 1000;
   
   // If visited recently, add hidden class immediately
-  if (lastVisit && (now - parseInt(lastVisit)) <= fiveMinutes) {
+  if (LAST_VISIT && (now - parseInt(LAST_VISIT)) <= fiveMinutes) {
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('loadingScreen').classList.add('hidden');
     });
@@ -12,12 +12,21 @@
 })();
 
 $(document).ready(function(){
-	const lastVisit = sessionStorage.getItem('pageLoaded');
+	const LAST_VISIT = sessionStorage.getItem('pageLoaded');
 	const now = Date.now();
-	const fiveMinutes = 5 * 60 * 1000; 
+	const FIVE_MINUTES = 5 * 60 * 1000; 
+	const ANIMATION_DURATION = 600;
+	const SCROLL_SETTLE_DELAY = 350;
+	const LOADING_TIMEOUT = 600;
+
+	try {
+    sessionStorage.setItem('pageLoaded', now.toString());
+	} catch (e) {
+	    console.warn('SessionStorage not available:', e);
+	}
 
 	$('#loadingScreen').show();
-	if (!lastVisit || (now - parseInt(lastVisit)) > fiveMinutes) {
+	if (!LAST_VISIT || (now - parseInt(LAST_VISIT)) > FIVE_MINUTES) {
     	$('#loadingScreen').show();
     	// Hide loading screen when everything is loaded
 		$(window).on('load', function() {
@@ -36,12 +45,10 @@ $(document).ready(function(){
 		$('#loadingScreen').hide();
 	}
 
-	
-
 	const topPositions = [
 		'calc(0% + 0.5em - var(--pill-height)/2)',
-      	'calc(50% - var(--pill-height)/2)',
-      	'calc(100% - 0.5em - var(--pill-height)/2)'
+    'calc(50% - var(--pill-height)/2)',
+    'calc(100% - 0.5em - var(--pill-height)/2)'
 	];
 	chapterSelect(0, true);
 	
