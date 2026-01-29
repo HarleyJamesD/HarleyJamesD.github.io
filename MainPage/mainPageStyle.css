@@ -182,7 +182,7 @@ section {
   height: 100vh;  
   display: grid;
   gap: 2%;
-  column-gap: 0%;
+  column-gap: 3%;
   grid-template-columns: 6fr 4fr;
   grid-template-rows: 1fr 1fr;
   box-sizing: border-box;
@@ -208,14 +208,14 @@ section {
   grid-column: 2; 
   grid-row: 1; 
   align-items: end;
-  justify-content: center;
+  justify-content: start;
 }
 
 #CrowdCard  { 
   grid-column: 2; 
   grid-row: 2; 
   align-items: start;
-  justify-content: center;
+  justify-content: start;
 }
 
 
