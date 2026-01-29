@@ -14,18 +14,90 @@ section {
   padding: 4rem;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 h1 {
+  font-size: 8rem;
+  display: block;
+  margin: 5vh 0 0 5vw;
+  /*margin-top: 10vh;*/
+}
+
+#ProjectList {
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  gap: 2vh;
+}
+
+.ProjectTab {
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  align-items: center;
+  justify-items: center;
+  background-color: white;
+  width: 60vw;
+  border-radius: 99px;
+  overflow: hidden;
+  box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
+  transition: transform 0.3s ease-out 0s;
+}
+
+picture {
+  justify-self: start;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 99px 2rem 2rem 99px;
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+picture img {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  object-fit: cover; 
+}
+
+.ProjectTab h2 {
+  line-height: 1;
+  font-size: 2rem;
+}
+
+.ProjectTab:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+h2 {
   padding: 0;
   margin: 0;
   /*padding-top: 0.4rem;*/
   line-height: 0.9;
   display: block;
   text-align: center;
+  font-size: 4rem;
 }
 
-h2 {
+h3 {
+  font-size: 2rem;
   padding: 0;
   margin: 0;
+  margin-top: 2rem;
 }
 
 .GameTitleImage {
@@ -80,4 +152,34 @@ ul {
 li{
   padding: 1%;
   margin: 0;
+}
+
+.imageArray {
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  overflow: hidden;
+  gap: 0.5rem;
+  width: 100%; /* ensure it takes full width */
+}
+
+.imageArray img {
+  height: 100%; /* fill the container height */
+  width: auto; /* maintain aspect ratio */
+  border-radius: 1rem;
+  flex-shrink: 1; /* allow images to shrink if needed */
+  min-width: 0; /* allow flexbox to shrink below intrinsic size */
+}
+
+@media (max-aspect-ratio: 4/3) {
+  .imageArray {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  
+  .imageArray img {
+    height: 10vh; /* smaller fixed height */
+    width: auto; /* maintain aspect ratio */
+    max-width: 48%; /* 2 images per row with gap */
+  }
 }
