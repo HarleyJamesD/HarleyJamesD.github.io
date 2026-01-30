@@ -2,7 +2,10 @@ $(document).ready(function(){
 	$('#return').hide();
 
 	$('#return').click(function() {
-	  $('html, body').animate({ scrollTop: 0 }, 'smooth');
+		$('html').css('scroll-behavior', 'auto');
+	  $('html, body').animate({ scrollTop: 0 }, 1000, function() {
+	  	$('html').css('scroll-behavior', '');
+	  });
 	});
 
 	$(window).scroll(function() {
@@ -18,11 +21,16 @@ $(document).ready(function(){
 	  var target = $(this).attr('href');
 	  var targetElement = $(target);
 	  
-	  // Get the scroll-margin-top value from CSS
-	  var scrollMargin = parseFloat(getComputedStyle(targetElement[0]).scrollMarginTop);
+	  var scrollMargin = parseFloat(getComputedStyle(targetElement[0]).scrollMarginTop) || 0;
+	  
+	  // Temporarily disable CSS smooth scrolling
+	  $('html').css('scroll-behavior', 'auto');
 	  
 	  $('html, body').animate({
 	    scrollTop: targetElement.offset().top - scrollMargin
-	  }, 1000);
+	  }, 1000, function() {
+	    // Re-enable after animation
+	    $('html').css('scroll-behavior', '');
+	  });
 	});
 })
