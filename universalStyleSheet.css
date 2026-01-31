@@ -18,11 +18,11 @@ button {
   background-color: transparent;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  box-shadow: inset 0 0 0 0.04rem white; 
+  box-shadow: inset 0 0 0 0.04rem transparent; 
 }
 
 button:hover {
-  box-shadow: inset 0 0 0 0.15rem white; 
+  box-shadow: inset 0 0 0 0.15rem black; 
   font-weight: bold;
 }
 
@@ -144,24 +144,25 @@ header button:hover{
 
   @media (max-width: 600px) {
     header {
-      width: 100%;
+      /*width: 100%;*/
     }
     header nav{
       /*margin-right: 20vw;*/
+      flex-direction: column;
       justify-content: space-between;
     }
     a {
       width: 35vw;
     }
     header button {
-      width: 100%;
+      /*width: 100%;*/
       height: 100%;
     }
     #NameButton{
       max-width: 6ch;
       flex: 0 0 auto;
       text-align: left;
-      width: 100%;
+      /*width: 100%;*/
     }
 
   }

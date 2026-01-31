@@ -2,6 +2,8 @@ $(document).ready(function(){
 	$('#return').hide();
 
 	$('#return').click(function() {
+		// history.pushState(null, null, window.location.pathname);
+		// history.replaceState(null, null, ' ');
 		$('html').css('scroll-behavior', 'auto');
 	  $('html, body').animate({ scrollTop: 0 }, 1000, function() {
 	  	$('html').css('scroll-behavior', '');
