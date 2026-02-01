@@ -75,13 +75,24 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', function(e) {
-    if ($('#email').hasClass('expanded')) {
-        // Check if click is outside the email element
-        if (!$(e.target).closest('#email').length) {
-            $('#email').removeClass('expanded');
-            $('#blur').removeClass('active').stop(true, false).fadeOut(300);
-            $('#blur').stop(true, false).fadeOut(300);
-        }
-    }
-});
+	    if ($('#email').hasClass('expanded')) {
+	        // Check if click is outside the email element
+	        if (!$(e.target).closest('#email').length) {
+	            $('#email').removeClass('expanded');
+	            $('#blur').removeClass('active').stop(true, false).fadeOut(300);
+	            $('#blur').stop(true, false).fadeOut(300);
+	        }
+	    }
+	});
+
+	// Clear form and close card after submission
+	$('#email form').on('submit', function() {
+	    var form = this;
+	    
+	    setTimeout(function() {
+	        form.reset();
+	        $('#email').removeClass('expanded');
+	        $('#blur').removeClass('active').stop(true, false).fadeOut(300);
+	    }, 100);
+	});
 })

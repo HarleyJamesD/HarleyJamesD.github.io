@@ -7,7 +7,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 99;
+	z-index: 50;
 	width: 100vw;
 	height: 100vh;
 	pointer-events: none; 
@@ -137,7 +137,7 @@
 	background-color: white;
 
 	border-style: solid;
-	border-radius: 5%;
+	border-radius: 2rem;
 	border-width: 0rem;
 	box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
 	will-change: transform;
@@ -180,16 +180,30 @@
 	z-index: 100;
 }
 
+#email::before {
+	content: '';
+	display: none;
+}
+
 #email.expanded {
+	position: absolute;
 	cursor: default;
 	box-sizing: border-box;
 	overflow: hidden;
+	width: 40vw;
 	height: 70vh;
 	display: flex;
 	flex-direction: row;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 }
+
+#email.expanded::before {
+	display: block;
+	padding-bottom: 100%; /* Maintains space in grid */
+}
+
+
 
 #email .email-header {
 	display: flex;
