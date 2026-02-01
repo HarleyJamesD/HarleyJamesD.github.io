@@ -30,7 +30,7 @@ $(document).ready(function(){
 		$(this).addClass("elevated");
 
 		const randomRotation = Math.random() < 0.5 ? -3 : 3;
-    $(this).css('transform', `scale(1.05) rotate(${randomRotation}deg)`);
+    	$(this).css('transform', `scale(1.05) rotate(${randomRotation}deg)`);
 
 		clearTimeout(hoverTimeout);
 		hoverTimeout = setTimeout(function(){
