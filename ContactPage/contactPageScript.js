@@ -79,6 +79,7 @@ $(document).ready(function(){
 	        // Check if click is outside the email element
 	        if (!$(e.target).closest('#email').length) {
 	            $('#email').removeClass('expanded');
+	            $('#email').removeClass("elevated");
 	            $('#blur').removeClass('active').stop(true, false).fadeOut(300);
 	            $('#blur').stop(true, false).fadeOut(300);
 	        }
@@ -92,6 +93,7 @@ $(document).ready(function(){
 	    setTimeout(function() {
 	        form.reset();
 	        $('#email').removeClass('expanded');
+	        $('#email').removeClass("elevated");
 	        $('#blur').removeClass('active').stop(true, false).fadeOut(300);
 	    }, 100);
 	});
