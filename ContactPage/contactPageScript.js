@@ -26,11 +26,18 @@ $(document).ready(function(){
 	let hoverTimeout;
 	let defaultZ = 1;
 	$('.socialMedia').hover(function(){
+		if($('#email').hasClass('expanded')) {
+	        return;
+	    }
+
 		$('.socialMedia').stop(true, false); // Stop all queued animations
 		$(this).addClass("elevated");
-
-		const randomRotation = Math.random() < 0.5 ? -3 : 3;
-    	$(this).css('transform', `scale(1.05) rotate(${randomRotation}deg)`);
+		if($(this).attr('id') === "email") {
+		    $(this).css('transform', `scale(1.05)`);
+		} else {
+		    const randomRotation = Math.random() < 0.5 ? -3 : 3;
+		    $(this).css('transform', `scale(1.05) rotate(${randomRotation}deg)`);
+		}
 
 		clearTimeout(hoverTimeout);
 		hoverTimeout = setTimeout(function(){
@@ -38,9 +45,43 @@ $(document).ready(function(){
 		}, 150);
 
 	}, function(){
+		if($('#email').hasClass('expanded')) {
+	        return;
+	    }
+		
 		$(this).removeClass("elevated");
 		$(this).css('transform', '');
 		clearTimeout(hoverTimeout);
 		$('#blur').stop(true, false).fadeOut(100);
 	});
+
+	// Email collapsible toggle
+	$('#email').on('click', function(e) {
+		e.stopPropagation();
+		$('#email').addClass('expanded');
+		$('#blur').addClass('active').stop(true, false).fadeIn(300);
+		if ($('#email').hasClass('expanded')) {
+			// $('#email').removeClass('elevated');
+			$('#email').css('transform', '');
+			$('#blur').stop(true, false).fadeIn(300);
+		} else {
+			$('#blur').stop(true, false).fadeOut(300);
+		}
+	});
+
+	// Prevent form clicks from toggling
+	$('#email form').on('click', function(e) {
+		e.stopPropagation();
+	});
+
+	$(document).on('click', function(e) {
+    if ($('#email').hasClass('expanded')) {
+        // Check if click is outside the email element
+        if (!$(e.target).closest('#email').length) {
+            $('#email').removeClass('expanded');
+            $('#blur').removeClass('active').stop(true, false).fadeOut(300);
+            $('#blur').stop(true, false).fadeOut(300);
+        }
+    }
+});
 })
