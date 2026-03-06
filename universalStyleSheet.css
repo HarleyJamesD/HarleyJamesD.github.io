@@ -164,7 +164,7 @@ header button:hover {
   header button {
     width: 100%;
     padding: 0.55em 0.4em;
-    font-size: clamp(0.65rem, 3vh, 1.8rem);
+    font-size: clamp(0.65rem, 3vh, 2rem);
     border-radius: 0.8rem;
         height: 6vh;
   }

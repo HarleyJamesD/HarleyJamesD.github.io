@@ -241,6 +241,13 @@ li{
   MOBILE HEADER  (≤ 768px)
 ——————————————————*/
 @media (max-width: 768px) {
+    h1 {
+      font-size: 8rem;
+      display: block;
+      margin: 8vh 0 0 5vw;
+      /*margin-top: 10vh;*/
+    }
+
     #return button{
     position: fixed;
     right: 0;
