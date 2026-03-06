@@ -71,11 +71,6 @@
       'calc(50% - var(--pill-height)/2)',
       'calc(100% - 0.5em - var(--pill-height)/2)'
     ];
-    const mobilePillPositions = ['0%', '33.33%', '66.66%'];
-
-    function isMobile() {
-      return window.innerWidth <= 768;
-    }
 
     let currentChapterIndex = 0;
     let isScrolling = false;
@@ -83,13 +78,9 @@
     let scrollTimer = null;
     let cancelScroll = false;
 
+
     // Initialize first chapter
     chapterSelect(0, true);
-
-    // Re-apply pill position on resize (handles orientation changes too)
-    window.addEventListener('resize', function() {
-      chapterSelect(currentChapterIndex, false);
-    });
 
     // Chapter list click handlers
     const chapterItems = chapterList.querySelectorAll('li');
@@ -122,14 +113,8 @@
         selectedChapterTitle.classList.add('chapterSelected');
         previousSelection = selectedChapterTitle;
       }
-      // Move the pill — horizontal on mobile, vertical on desktop
-      if (isMobile()) {
-        chapterPill.style.top = '0';
-        chapterPill.style.left = mobilePillPositions[selectedChapterIndex];
-      } else {
-        chapterPill.style.left = '';
-        chapterPill.style.top = topPositions[selectedChapterIndex];
-      }
+      // Move the pill
+      chapterPill.style.top = topPositions[selectedChapterIndex];
 
       //Scroll to section if shouldScroll is true
       if (shouldScroll) {
@@ -141,7 +126,7 @@
         const scrollTo = elementTop - (windowHeight / 2) + (elementHeight / 2);
         
         // Smooth scroll to position
-        isScrolling = true; 
+        isScrolling = true;	
         smoothScrollTo(scrollTo, ANIMATION_DURATION, function() {
           isScrolling = false;
         });
@@ -216,35 +201,35 @@
     }
 
     function smoothScrollTo(targetPosition, duration, callback) {
-      const startPosition = window.pageYOffset || document.documentElement.scrollTop;
-      const distance = targetPosition - startPosition;
-      const startTime = performance.now();
-      
-      cancelScroll = false; // Reset
+		  const startPosition = window.pageYOffset || document.documentElement.scrollTop;
+		  const distance = targetPosition - startPosition;
+		  const startTime = performance.now();
+		  
+		  cancelScroll = false; // Reset
 
-      function animation(currentTime) {
-        if (cancelScroll) {
-          if (callback) callback();
-          return;
-        }
+		  function animation(currentTime) {
+		    if (cancelScroll) {
+		      if (callback) callback();
+		      return;
+		    }
 
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        const easeProgress = progress < 0.5
-          ? 2 * progress * progress
-          : -1 + (4 - 2 * progress) * progress;
-        
-        window.scrollTo(0, startPosition + (distance * easeProgress));
+		    const elapsed = currentTime - startTime;
+		    const progress = Math.min(elapsed / duration, 1);
+		    
+		    const easeProgress = progress < 0.5
+		      ? 2 * progress * progress
+		      : -1 + (4 - 2 * progress) * progress;
+		    
+		    window.scrollTo(0, startPosition + (distance * easeProgress));
 
-        if (progress < 1) {
-          requestAnimationFrame(animation);
-        } else if (callback) {
-          callback();
-        }
-      }
-      requestAnimationFrame(animation);
-    }
+		    if (progress < 1) {
+		      requestAnimationFrame(animation);
+		    } else if (callback) {
+		      callback();
+		    }
+		  }
+		  requestAnimationFrame(animation);
+		}
 
 
     function stopScroll() {
@@ -282,18 +267,18 @@
     });
 
     window.addEventListener('wheel', function() {
-      if (isScrolling) cancelScroll = true;
-    }, { passive: true });
+		  if (isScrolling) cancelScroll = true;
+		}, { passive: true });
 
-    window.addEventListener('touchmove', function() {
-      if (isScrolling) cancelScroll = true;
-    }, { passive: true });
+		window.addEventListener('touchmove', function() {
+		  if (isScrolling) cancelScroll = true;
+		}, { passive: true });
 
-    window.addEventListener('keydown', function(e) {
-      const scrollKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
-      if (scrollKeys.includes(e.keyCode) && isScrolling) {
-        cancelScroll = true;
-      }
-    });
+		window.addEventListener('keydown', function(e) {
+		  const scrollKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+		  if (scrollKeys.includes(e.keyCode) && isScrolling) {
+		    cancelScroll = true;
+		  }
+		});
   }
 })();
