@@ -236,3 +236,42 @@ li{
     max-width: 48%; /* 2 images per row with gap */
   }
 }
+
+/*——————————————————
+  MOBILE HEADER  (≤ 768px)
+——————————————————*/
+@media (max-width: 768px) {
+    #return button{
+    position: fixed;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    margin: 1rem;
+    width: 10rem;
+    height: 5rem;
+    font-size: 1.3rem;
+    border-radius: 2rem;
+    border-width: 0.01rem;
+    border-style: none;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 0 0.04rem black; 
+    transition: all 0.3s ease-out 0s;
+    z-index: 100;
+  }
+
+  p {
+    font-size: 1.3rem;
+  }
+
+  .ProjectBanner button {
+    width: 15rem;
+    height: 4rem;
+    border-style: none;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 0.05rem black;
+    font-size: 1.2rem;
+  }
+
+}

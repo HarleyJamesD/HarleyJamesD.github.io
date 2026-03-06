@@ -304,14 +304,14 @@ form button[type="submit"]:hover {
 	background: red;
 }
 
-@media (max-width: 900px), (orientation: portrait) {
+/*@media (max-width: 900px), (orientation: portrait) {
 	#socials {
 		position: absolute;
 		margin: 0;
 		right: 5vw;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
-    width: 35%; /* Adjust as needed */
+    width: 35%; 
     height: 100%;
     padding-bottom: 70vh;
   }
@@ -337,5 +337,44 @@ form button[type="submit"]:hover {
 		width: 80vw;
 	}
 
+}*/
+
+/*——————————————————
+  MOBILE HEADER  (≤ 768px)
+  ~70% width, centered, larger buttons, horizontal row
+——————————————————*/
+@media (max-width: 768px) {
+	#socials {
+			position: absolute;
+			margin: 0;
+			right: 5vw;
+	    grid-template-columns: 1fr;
+	    grid-template-rows: auto auto auto auto;
+	    width: 35%; /* Adjust as needed */
+	    height: 100%;
+	    padding-bottom: 70vh;
+	  }
+
+	  .socialMedia {
+			min-width: 0;
+			min-height: 30vh; 
+		}
+
+	  #title {
+	  	margin-top: 50vh;
+	  	margin-left: 2vw; 
+	  	transform: translateY(-50%);
+	  	font-size: 8rem;
+	  }
+		#title span:nth-child(3) {
+			font-size: 10rem;
+		}
+
+		#email.expanded {
+			position: fixed;
+			left: 10vw;
+			width: 80vw;
+		}
 }
+
 

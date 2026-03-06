@@ -17,7 +17,6 @@
 
 // Main code execution
 (function() {
-  // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
@@ -30,8 +29,9 @@
     const now = Date.now();
     const FIVE_MINUTES = 5 * 60 * 1000;
     const ANIMATION_DURATION = 400;
-    const SCROLL_SETTLE_DELAY = 500;
+    const SCROLL_SETTLE_DELAY = 300;
     const LOADING_TIMEOUT = 600;
+    const MOBILE_BREAKPOINT = 768;
 
     // Cache DOM elements
     const loadingScreen = document.getElementById('loadingScreen');
@@ -52,12 +52,10 @@
     if (!LAST_VISIT || (now - parseInt(LAST_VISIT)) > FIVE_MINUTES) {
       loadingScreen.style.display = 'flex';
       
-      // Hide loading screen when everything is loaded
       window.addEventListener('load', function() {
         fadeOutAndRemove(loadingScreen, ANIMATION_DURATION);
       });
 
-      // Backup timeout to remove loading screen
       setTimeout(function() {
         fadeOutAndRemove(loadingScreen, ANIMATION_DURATION);
       }, LOADING_TIMEOUT);
@@ -65,8 +63,12 @@
       loadingScreen.style.display = 'none';
     }
 
-    // Chapter navigation setup
-    // Returns the pixel `top` value that centres the pill on the given <li>
+    // Helper: is mobile layout active?
+    function isMobile() {
+      return window.innerWidth <= MOBILE_BREAKPOINT;
+    }
+
+    // Desktop pill positioning: vertical (top) offset
     function getPillTop(index) {
       const items = chapterList.querySelectorAll('ul > li');
       const listRect  = chapterList.getBoundingClientRect();
@@ -83,9 +85,8 @@
     let suppressScrollDetection = false;
     let suppressTimer = null;
 
-
     // Initialize first chapter
-    chapterSelect(0, true);
+    chapterSelect(0, false);
 
     // Chapter list click handlers
     const chapterItems = chapterList.querySelectorAll('li');
@@ -110,7 +111,7 @@
       const chapterChildren = chapterList.querySelectorAll('ul > li');
       const selectedChapterTitle = chapterChildren[selectedChapterIndex];
       
-      // Update visual indicator (pill and selected chapter)
+      // Update visual indicator
       if (selectedChapterTitle !== previousSelection) {
         if (previousSelection) {
           previousSelection.classList.remove('chapterSelected');
@@ -118,36 +119,46 @@
         selectedChapterTitle.classList.add('chapterSelected');
         previousSelection = selectedChapterTitle;
       }
-      // Move the pill (pixel value so CSS transition always interpolates cleanly)
-      chapterPill.style.top = getPillTop(selectedChapterIndex) + 'px';
 
-      //Scroll to section if shouldScroll is true
+      // Move the pill:
+      //   Desktop → slide vertically (top offset)
+      //   Mobile  → slide horizontally (left, 1/3 width per tab)
+      if (isMobile()) {
+        chapterPill.style.left = (selectedChapterIndex * 33.333) + '%';
+        chapterPill.style.top  = '0';
+      } else {
+        chapterPill.style.top  = getPillTop(selectedChapterIndex) + 'px';
+        chapterPill.style.left = '';
+      }
+
+      // Scroll to section if shouldScroll is true
       if (shouldScroll) {
         const selectedSection = sectionChildren[selectedChapterIndex];
         const elementTop = getOffset(selectedSection).top;
         const elementHeight = selectedSection.offsetHeight;
         const windowHeight = window.innerHeight;
-        //Calculate position
         const scrollTo = elementTop - (windowHeight / 2) + (elementHeight / 2);
         
-        // Stop scroll detection from fighting the click-initiated scroll
         clearTimeout(scrollTimer);
         clearTimeout(suppressTimer);
         suppressScrollDetection = true;
 
-        // Smooth scroll to position
         isScrolling = true;
         cancelScroll = false;
         smoothScrollTo(scrollTo, ANIMATION_DURATION, function() {
           isScrolling = false;
-          suppressScrollDetection = false;
+          // On mobile, delay re-enabling scroll detection slightly longer
+          // to avoid immediately snapping back after programmatic scroll
+          const delay = isMobile() ? 300 : 0;
+          setTimeout(function() {
+            suppressScrollDetection = false;
+          }, delay);
         });
       }
     }
 
     // Blur overlay for experiences section
     if (experiences) {
-      // Create blur overlay element
       const blurOverlay = document.createElement('div');
       blurOverlay.className = 'blur-overlay';
       experiences.appendChild(blurOverlay);
@@ -158,14 +169,11 @@
         const clientHeight = this.clientHeight;
         const maxScroll = scrollHeight - clientHeight;
         
-        // Calculate scroll percentage (0 at top, 1 at bottom)
         const scrollPercent = maxScroll > 0 ? scrollTop / maxScroll : 0;
         
-        // Calculate opacity for top and bottom blurs (0 to 1)
         const topBlurOpacity = Math.min(scrollPercent * 2, 1);
         const bottomBlurOpacity = Math.max(1 - (scrollPercent * 2), 0);
         
-        // Update the blur overlay mask
         const blurMask = `
           linear-gradient(
             to bottom,
@@ -179,23 +187,31 @@
         blurOverlay.style.maskImage = blurMask;
         blurOverlay.style.webkitMaskImage = blurMask;
         
-        // Update box-shadow for the darkening effect
         const topShadow = `0 10vh 10vh -15vh rgba(0, 0, 0, ${topBlurOpacity * 0.5}) inset`;
         const bottomShadow = `0 -10vh 10vh -15vh rgba(0, 0, 0, ${bottomBlurOpacity * 0.5}) inset`;
         
         this.style.boxShadow = `${topShadow}, ${bottomShadow}`;
       });
       
-      // Trigger initial state
       experiences.dispatchEvent(new Event('scroll'));
     }
+
+    // Re-position pill on resize (handles mobile ↔ desktop transitions)
+    window.addEventListener('resize', function() {
+      if (isMobile()) {
+        chapterPill.style.left = (currentChapterIndex * 33.333) + '%';
+        chapterPill.style.top  = '0';
+      } else {
+        chapterPill.style.top  = getPillTop(currentChapterIndex) + 'px';
+        chapterPill.style.left = '';
+      }
+    });
 
     // Utility Functions
 
     function fadeOutAndRemove(element, duration) {
       element.style.transition = `opacity ${duration}ms`;
       element.style.opacity = '0';
-      
       setTimeout(function() {
         element.remove();
       }, duration);
@@ -205,7 +221,6 @@
       const rect = element.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-      
       return {
         top: rect.top + scrollTop,
         left: rect.left + scrollLeft
@@ -217,7 +232,7 @@
       const distance = targetPosition - startPosition;
       const startTime = performance.now();
       
-      cancelScroll = false; // Reset
+      cancelScroll = false;
 
       function animation(currentTime) {
         if (cancelScroll) {
@@ -244,28 +259,18 @@
     }
 
 
-    function stopScroll() {
-      // Cancel any ongoing scroll animation by scrolling to current position
-      window.scrollTo(window.pageXOffset, window.pageYOffset);
-    }
+    // Event Listeners
 
-
-    // Event Functions
-
-    // Scroll event handler
     window.addEventListener('scroll', function() {
       if (suppressScrollDetection) return;
 
-      // Clear existing timer
       clearTimeout(scrollTimer);
       
-      // Only update chapter pill after scrolling has fully settled
       scrollTimer = setTimeout(function() {
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight;
         const sectionChildren = sideLayout.children;
         
-        // Find which section the viewport midpoint is in
         let detectedIndex = 0;
         for (let i = 0; i < sectionChildren.length; i++) {
           const sectionTop = getOffset(sectionChildren[i]).top;

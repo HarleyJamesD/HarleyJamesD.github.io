@@ -1,5 +1,7 @@
 :root {
   --pill-height: 20vh; 
+  --header-height: 60px;
+  --bottom-nav-height: 64px;
 }
 
 @font-face {
@@ -13,63 +15,51 @@ h2{
 
 section {
   position: relative;
-  /*transform: translate(0, 50vh);*/
   height: 100vh;
 }
 
+/* Show/hide helpers */
+.mobileOnly { display: none; }
+.desktopOnly { display: block; }
 
+
+/*——————————————————
+  DESKTOP: Chapter nav (left side)
+——————————————————*/
 #chapterList {
   position: fixed;
   top: 25vh;
   left: 5vw;
   width: 25vw;
-
   height: 55vh;
-
-  /*display: flex;*/
   font-size: clamp(1rem, 1rem + 3vw, 20rem);
-
 }
 
 #chapterList ul {
   z-index: 50;
   position: relative;
   right: 0;
-
   margin: 0;
   padding: 0;
   list-style-type: none;
-
   height: 100%;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  /*font-size: clamp(3rem, 2.2vw, 29rem);*/
   font-weight: 500;
   line-height: 1;
-
-  /*overflow: hidden;*/
 }
 
 #chapterPill {
   position: absolute;
   right: -25%;
-  top: 0; /* initial value – JS sets this immediately on load */
-  
+  top: calc(0% + 0.5em - var(--pill-height)/2);
   width: 80vw;
   height: var(--pill-height);
-  /*transform: translate(-50%);*/
-  
-  /*background-color: lightsalmon;*/
   background-color: #FFC94B;
   border-radius: var(--pill-height);
-  
   z-index: 0;
-  
-  /* Smooth transitions when position changes */
   transition: top 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
@@ -79,14 +69,12 @@ section {
   user-select: none;
   width: 100%;
   text-align: right;
-  /*margin-right: 10%; /* Push text 10% from the right edge */
   margin-bottom: 0;
   transition: font-weight 0.3s ease, color 0.3s ease;
   cursor: pointer;
   transform: translateX(-10%); 
   transition: all 0.3s ease-in-out 0s;
   white-space: nowrap; 
-  /*transform-origin: right center;*/
 }
 
 #chapterList li.chapterSelected {
@@ -102,6 +90,9 @@ section {
 }
 
 
+/*——————————————————
+  DESKTOP: Side layout
+——————————————————*/
 #sideLayout {
   display: flex;
   flex-direction: column;
@@ -115,12 +106,11 @@ section {
 } 
 
 
-
-
-/*About Me section*/
+/*——————————————————
+  About Me section
+——————————————————*/
 #aboutMe {
   position: relative;
-  /*margin-top: 5vh;*/
   display: flex;
   gap: 2vh;
   padding-bottom: -10vh;
@@ -147,12 +137,9 @@ section {
   position: relative;
   display: block;
   padding: 0;
-  /*margin: 0;*/
   width: 100%;
-  /*margin-top: -5%;*/
   -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-
+  backdrop-filter: blur(16px);
 }
 
 #aboutMeBlurb {
@@ -163,7 +150,6 @@ section {
   font-weight: 300;
   z-index: 2;
   text-align: justify;
-  /*Maybe ^?*/
 }
 
 .shape {
@@ -172,13 +158,13 @@ section {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  /*filter: blur(1px);*/
 }
 
 
-
-/*Highlighted projects*/
-#highlightedProjects{
+/*——————————————————
+  Highlighted Projects (desktop grid)
+——————————————————*/
+#highlightedProjects {
   height: 100vh;  
   display: grid;
   gap: 2%;
@@ -190,10 +176,10 @@ section {
 
 #VULTURCard,
 #TVCard,
-#CrowdCard{
+#CrowdCard {
   display: flex;
   min-height: 100%;
-  overflow: visible;           /* prevents any visual bleed */
+  overflow: visible;
 }
 
 #VULTURCard { 
@@ -218,8 +204,7 @@ section {
   justify-content: start;
 }
 
-
-#cardStack{
+#cardStack {
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -229,7 +214,7 @@ section {
   max-width: 100%;
 }
 
-a{
+a {
   width: 92%;
 }
 
@@ -237,28 +222,21 @@ a{
   width: 100%;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  /*background-image: url(../images/Transparent-Texture.webp);*/
   box-sizing: border-box;
   box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
-  color:black;
+  color: black;
   background-color: white;
-
-  cursor:pointer;
+  cursor: pointer;
   border-width: 0;
   border-radius: 1rem;
-
   text-transform: uppercase;
   font-size: clamp(0.7rem, 1.2vw, 10rem);
-  /*font-family: "Roboto", sans-serif;
-  font-weight: 400;*/
   padding: 0.7rem;
-
   transition: all 0.3s ease-out 0s;
 }
 
 #cardStack button:hover {
   border-color: transparent;
-  /*Padding causes the parent to expand which is not what i want*/
   padding-top: 1rem;
   padding-bottom: 1rem;
   transform: scale(1.05);
@@ -268,21 +246,16 @@ a{
 }
 
 #cardStack .ProjectCard {
-   max-width: 92%;
+  max-width: 92%;
   max-height: 92%;
 }
 
 .ProjectCard {
-  /*cursor: none;*/
-
   aspect-ratio: 1/1.4;
-  /* fit inside the grid cell */
   max-width: 70%;
   max-height: 92%;
-  /* let the browser pick the limiting dimension */
   width: auto;
   height: auto;  
-
   padding: 0.5rem 0.5rem 0.2rem 0.5rem;
   border-radius: 1rem;
   border-width: 0rem;
@@ -291,7 +264,6 @@ a{
   background-color: white;
   overflow: hidden;
   position: relative;
-
   transition: transform 0.3s ease-out 0s;
 }
 
@@ -331,7 +303,7 @@ a{
   box-sizing: border-box;
   border-width: 0rem;
   border-style: solid;
-  margin:auto;
+  margin: auto;
   background: gray;
   overflow: hidden;
 }
@@ -341,23 +313,28 @@ a{
 }
 
 #VULTURCard .ProjectCard h1 {
-  font-size: clamp(1rem, 2.3rem, 30rem);;
+  font-size: clamp(1rem, 2.3rem, 30rem);
 }
 
 #VULTURCard .ProjectCard p {
   font-size: clamp(0.3rem, 0.6vh + 0.6vw + 0.3rem, 2rem);
 }
 
+/* Hide mobile-only view all on desktop */
+#mobileViewAllBtn {
+  display: none;
+}
 
 
-/*Work Experience*/
-#workExperience{
+/*——————————————————
+  Work Experience
+——————————————————*/
+#workExperience {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3vh;
-  /*background-color: red;*/
 }
 
 #universityExperience {
@@ -369,7 +346,6 @@ a{
   width: 86%;
   border-radius: 1rem;
   overflow: hidden;
-
   transition: all 0.3s ease-out 0s;
 }
 
@@ -400,7 +376,6 @@ a{
 }
 
 #uniText h3 {
-  /*text-transform: uppercase;*/
   font-size: clamp(1.3rem, 1.8vw, 1.5rem);
   font-weight: 600;
   margin: 0;
@@ -418,8 +393,7 @@ a{
 
 #uniText p {
   align-self: start;
-  /*text-align: justify;*/
-  font-size:  clamp(0.4rem, 0.8vw + 0.4rem, 3rem);
+  font-size: clamp(0.4rem, 0.8vw + 0.4rem, 3rem);
   user-select: none;
 }
 
@@ -447,13 +421,11 @@ a{
   grid-template-areas: 
   "JobTitle JobTitle Company"
   "Blurb    Blurb    Blurb";
-  /*margin-bottom: 5%;*/
 }
 
 #experiences h3 {
   user-select: none;
   grid-area: JobTitle;
-
   align-self: end;
   text-transform: uppercase;
   font-size: clamp(1.3rem, 1.8vw, 1.5rem);
@@ -472,16 +444,15 @@ a{
   text-transform: uppercase;
   font-size: clamp(0.4rem, 1vw + 0.4rem, 1.2rem);
   font-weight: 600;
-  /*font-style: italic;*/
 }
 
-#experiences p{
+#experiences p {
   user-select: none;
   grid-area: Blurb;
   margin: 1%;
   margin-right: 0;
   align-self: start;
-  font-size:  clamp(0.4rem, 0.8vw + 0.4rem, 3rem);
+  font-size: clamp(0.4rem, 0.8vw + 0.4rem, 3rem);
 }
 
 @media (max-width: 1200px) {
@@ -500,4 +471,317 @@ a{
     margin: 0;
     margin-bottom: 1%;
   }
- }
+}
+
+
+/*══════════════════════════════════════════
+  MOBILE STYLES  (≤ 768px)
+══════════════════════════════════════════*/
+@media (max-width: 768px) {
+
+  /* Show/hide helpers */
+  .mobileOnly { display: block; }
+  .desktopOnly { display: none; }
+
+  /*——— Layout ———*/
+  #sideLayout {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  /* Sections keep full-viewport height so JS centering scroll still works */
+  section {
+    height: calc(100dvh - var(--bottom-nav-height));
+    overflow: hidden;
+    padding-top: 0;
+    box-sizing: border-box;
+  }
+
+  /*——— Chapter nav → bottom bar ———*/
+  #chapterList {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    width: 100%;
+    height: var(--bottom-nav-height);
+    padding: 0;
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    font-size: 1rem;
+    /* pill is absolute inside this fixed container */
+    overflow: hidden;
+  }
+
+  #chapterList ul {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 100%;
+    padding: 0;
+    gap: 0;
+    /* sit above the pill */
+    position: relative;
+    z-index: 1;
+  }
+
+  #chapterList li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* kill desktop transform behaviours */
+    transform: none !important;
+    scale: none !important;
+    white-space: nowrap;
+    font-size: clamp(0.65rem, 3.2vw, 0.9rem);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0 0.5rem;
+    transition: font-weight 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Selected: bold + amber text; pill provides the background */
+  #chapterList li.chapterSelected {
+    font-weight: 800;
+    color: #8a6800;
+    transform: none !important;
+    scale: none !important;
+  }
+
+  #chapterList.normal-click li:hover {
+    transform: none !important;
+    font-weight: 600;
+  }
+
+  /*
+   * Repurpose the pill as a horizontal sliding highlight
+   * that glides behind whichever tab is active.
+   * JS sets `left` instead of `top` on mobile.
+   */
+  #chapterPill {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;           /* JS overrides this per-tab */
+    right: auto;
+    width: 33.333%;
+    height: 100%;
+    border-radius: 0;
+    background-color: rgba(255, 201, 75, 0.28);
+    border-bottom: 3px solid #FFC94B;
+    /* slide horizontally instead of vertically */
+    transition: left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 0;
+  }
+
+
+  /*——— About Me ———*/
+  #aboutMe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 80px 1.5rem 1rem;
+    box-sizing: border-box;
+    /* height comes from `section` rule above */
+  }
+
+  #myPicture {
+    max-width: 55%;
+    max-height: 40vh;
+  }
+
+  #aboutMeBlurb {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    width: 100%;
+    text-align: left;
+  }
+
+
+  /*——— Highlighted Projects → horizontal scroll ———*/
+  #highlightedProjects {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    overflow-y: visible;
+    gap: 4vw;
+    padding: 1.5rem 5vw;
+    align-items: center;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* match the section height exactly */
+    height: calc(100dvh - var(--bottom-nav-height)) !important;
+    box-sizing: border-box;
+    scrollbar-width: none;
+  }
+
+  #highlightedProjects::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Each card wrapper becomes a fixed-width snap point */
+  #VULTURCard,
+  #TVCard,
+  #CrowdCard {
+    flex: 0 0 72vw;
+    min-height: 0;
+    max-height: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    overflow: visible;
+  }
+
+  #cardStack {
+    display: contents;
+  }
+
+  #VULTURCard .ProjectCard,
+  #TVCard .ProjectCard,
+  #CrowdCard .ProjectCard {
+    max-width: 100%;
+    max-height: 70vh;
+    width: 68vw;
+    height: auto;
+    aspect-ratio: 1 / 1.4;
+  }
+
+  #VULTURCard .ProjectCard h1 {
+    font-size: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  #VULTURCard .ProjectCard p {
+    font-size: clamp(0.75rem, 3vw, 2rem);
+  }
+
+  .ProjectCard h1 {
+    font-size: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  .ProjectCard .CardBlurb {
+    font-size: clamp(0.75rem, 3vw, 2rem);
+    max-height: 28%;
+  }
+
+  /* "View All" card at end of horizontal scroll */
+  #mobileViewAllBtn {
+    display: flex !important;
+    flex: 0 0 55vw;
+    scroll-snap-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 55vw;
+  }
+
+  #mobileViewAllBtn button {
+    width: 100%;
+    background: white;
+    border-radius: 1.2rem;
+    padding: 3.5rem 1.5rem;
+    font-size: clamp(1rem, 4.5vw, 1.4rem);
+    box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem rgba(0,0,0,0.3);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: black;
+    transition: all 0.2s ease;
+    line-height: 1.4;
+  }
+
+  #mobileViewAllBtn button:hover,
+  #mobileViewAllBtn button:active {
+    background: #FFC94B;
+    transform: scale(1.04);
+  }
+
+
+  /*——— Work Experience ———*/
+  #workExperience {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3vh;
+    margin-bottom: 10vh;
+    box-sizing: border-box;
+    /* height comes from `section` rule above */
+    height: 80vh;
+  }
+
+  #universityExperience {
+    width: 80%;
+    height: 10vh;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #uniLogoFrame {
+    min-width: 15%;
+    max-width: 30%;
+    padding: 1rem 1rem 0 1rem;
+    margin: 0 auto;
+  }
+
+  #uniText {
+    padding: 0.3rem 1rem 1rem;
+  }
+
+  #uniText h3 {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  }
+
+  #uniText h4 {
+    font-size: clamp(0.75rem, 3.2vw, 1rem);
+  }
+
+  #uniText p {
+    font-size: clamp(0.8rem, 3.2vw, 1rem);
+  }
+
+  #experiences {
+    width: 80%;
+    max-height: 45vh;
+    box-sizing: border-box;
+    gap: 2.5vh;
+  }
+
+  #experiences h3 {
+    font-size: clamp(1rem, 4.5vw, 1.3rem);
+  }
+
+  #experiences h4 {
+    font-size: clamp(0.75rem, 3.2vw, 1rem);
+  }
+
+  #experiences p {
+    font-size: clamp(0.8rem, 3.2vw, 1rem);
+  }
+
+  .experience {
+    grid-template-areas: 
+    "JobTitle"
+    "Company"
+    "Blurb";
+  }
+
+  #experiences h4 {
+    align-self: start;
+    justify-self: start;
+  }
+}
