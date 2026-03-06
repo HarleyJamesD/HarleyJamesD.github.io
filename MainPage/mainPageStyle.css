@@ -121,13 +121,13 @@ section {
 
 #myPicture {
   max-width: 38%;
-  max-height: 50vh;
+  max-height: 35vh;
   aspect-ratio: 1 / 1;
   padding: 0;
   box-sizing: border-box;
   border-radius: 1rem;
   border-color: black;
-  border-width: 0.2rem;
+  border-width: 0.1rem;
   border-style: solid;
   overflow: hidden;
   z-index: 2;
@@ -138,16 +138,14 @@ section {
   display: block;
   padding: 0;
   width: 100%;
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
 }
 
 #aboutMeBlurb {
   display: block;
   width: 90%;
-  font-size: clamp(1.7rem, 1.5vw, 15rem);
+  font-size: clamp(1.4rem, 1.2vw, 8rem);
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   z-index: 2;
   text-align: justify;
 }
@@ -515,6 +513,7 @@ a {
     font-size: 1rem;
     /* pill is absolute inside this fixed container */
     overflow: hidden;
+    box-shadow: 0 0 2rem -1.7rem black; 
   }
 
   #chapterList ul {
@@ -600,9 +599,13 @@ a {
   }
 
   #aboutMeBlurb {
-    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-size: clamp(1rem, 4vw, 1.6rem);
     width: 100%;
     text-align: left;
+  }
+
+  .shape {
+    scale: 130%;
   }
 
 

@@ -20,7 +20,7 @@ button {
 }
 
 button:hover {
-  box-shadow: inset 0 0 0 0.15rem black; 
+  box-shadow: inset 0 0 0 0.3rem rgb(248, 226, 174); 
   font-weight: bold;
 }
 
@@ -46,6 +46,7 @@ header {
 
 header:hover {
   background-color: #FFC94B;
+  box-shadow: 0 0 2rem -1.2rem black; 
 }
 
 header nav {
