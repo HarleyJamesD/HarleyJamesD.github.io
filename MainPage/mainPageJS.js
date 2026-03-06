@@ -66,15 +66,13 @@
     }
 
     // Chapter navigation setup
-    const topPositions = [
-      'calc(0% + 0.5em - var(--pill-height)/2)',
-      'calc(50% - var(--pill-height)/2)',
-      'calc(100% - 0.5em - var(--pill-height)/2)'
-    ];
-    const mobilePillPositions = ['0%', '33.33%', '66.66%'];
-
-    function isMobile() {
-      return window.innerWidth <= 768;
+    // Returns the pixel `top` value that centres the pill on the given <li>
+    function getPillTop(index) {
+      const items = chapterList.querySelectorAll('ul > li');
+      const listRect  = chapterList.getBoundingClientRect();
+      const itemRect  = items[index].getBoundingClientRect();
+      const pillHeight = chapterPill.offsetHeight;
+      return (itemRect.top - listRect.top) + (itemRect.height / 2) - (pillHeight / 2);
     }
 
     let currentChapterIndex = 0;
@@ -82,14 +80,12 @@
     let previousSelection = null;
     let scrollTimer = null;
     let cancelScroll = false;
+    let suppressScrollDetection = false;
+    let suppressTimer = null;
+
 
     // Initialize first chapter
     chapterSelect(0, true);
-
-    // Re-apply pill position on resize (handles orientation changes too)
-    window.addEventListener('resize', function() {
-      chapterSelect(currentChapterIndex, false);
-    });
 
     // Chapter list click handlers
     const chapterItems = chapterList.querySelectorAll('li');
@@ -122,14 +118,8 @@
         selectedChapterTitle.classList.add('chapterSelected');
         previousSelection = selectedChapterTitle;
       }
-      // Move the pill — horizontal on mobile, vertical on desktop
-      if (isMobile()) {
-        chapterPill.style.top = '0';
-        chapterPill.style.left = mobilePillPositions[selectedChapterIndex];
-      } else {
-        chapterPill.style.left = '';
-        chapterPill.style.top = topPositions[selectedChapterIndex];
-      }
+      // Move the pill (pixel value so CSS transition always interpolates cleanly)
+      chapterPill.style.top = getPillTop(selectedChapterIndex) + 'px';
 
       //Scroll to section if shouldScroll is true
       if (shouldScroll) {
@@ -140,10 +130,17 @@
         //Calculate position
         const scrollTo = elementTop - (windowHeight / 2) + (elementHeight / 2);
         
+        // Stop scroll detection from fighting the click-initiated scroll
+        clearTimeout(scrollTimer);
+        clearTimeout(suppressTimer);
+        suppressScrollDetection = true;
+
         // Smooth scroll to position
-        isScrolling = true; 
+        isScrolling = true;
+        cancelScroll = false;
         smoothScrollTo(scrollTo, ANIMATION_DURATION, function() {
           isScrolling = false;
+          suppressScrollDetection = false;
         });
       }
     }
@@ -257,27 +254,26 @@
 
     // Scroll event handler
     window.addEventListener('scroll', function() {
-      if (isScrolling) return;
-
-      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      
-      const sectionChildren = sideLayout.children;
-      for (let i = 0; i < sectionChildren.length; i++) {
-        const sectionTop = getOffset(sectionChildren[i]).top;
-        
-        // Check if section is in viewport (using midpoint)
-        if (scrollPos + windowHeight / 2 >= sectionTop) {
-          chapterSelect(i, false);
-        }
-      }
+      if (suppressScrollDetection) return;
 
       // Clear existing timer
       clearTimeout(scrollTimer);
       
-      // Set new timer to center after scrolling stops
+      // Only update chapter pill after scrolling has fully settled
       scrollTimer = setTimeout(function() {
-        chapterSelect(currentChapterIndex, true);
+        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const sectionChildren = sideLayout.children;
+        
+        // Find which section the viewport midpoint is in
+        let detectedIndex = 0;
+        for (let i = 0; i < sectionChildren.length; i++) {
+          const sectionTop = getOffset(sectionChildren[i]).top;
+          if (scrollPos + windowHeight / 2 >= sectionTop) {
+            detectedIndex = i;
+          }
+        }
+        chapterSelect(detectedIndex, true);
       }, SCROLL_SETTLE_DELAY);
     });
 
