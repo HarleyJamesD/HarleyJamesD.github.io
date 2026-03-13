@@ -249,6 +249,8 @@ a {
 }
 
 .ProjectCard {
+  text-decoration: none;
+  color: inherit;
   aspect-ratio: 1/1.4;
   max-width: 70%;
   max-height: 92%;

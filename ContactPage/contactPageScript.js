@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 	const lastVisit = sessionStorage.getItem('pageLoaded');
 	const now = Date.now();
@@ -21,6 +23,10 @@ $(document).ready(function(){
 		sessionStorage.setItem('pageLoaded', now.toString());
 	} else {
 		$('#loadingScreen').hide();
+	}
+
+	if (!hasHardwareAcceleration()) {
+	  document.documentElement.classList.add('no-gpu');
 	}
 
 	let hoverTimeout;
@@ -97,4 +103,21 @@ $(document).ready(function(){
 	        $('#blur').removeClass('active').stop(true, false).fadeOut(300);
 	    }, 100);
 	});
+
+	function hasHardwareAcceleration() {
+	  try {
+	    const canvas = document.createElement('canvas');
+	    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+	    if (!gl) return false;
+
+	    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+	    if (!debugInfo) return true; // Can't detect, assume hardware
+
+	    const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+	    const softwareRenderers = /swiftshader|llvmpipe|software rasterizer|microsoft basic render/i;
+	    return !softwareRenderers.test(renderer);
+	  } catch (e) {
+	    return true; // Assume hardware if detection fails
+	  }
+	}
 })

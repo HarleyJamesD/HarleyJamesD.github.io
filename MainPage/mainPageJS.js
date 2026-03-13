@@ -208,7 +208,6 @@
     });
 
     // Utility Functions
-
     function fadeOutAndRemove(element, duration) {
       element.style.transition = `opacity ${duration}ms`;
       element.style.opacity = '0';

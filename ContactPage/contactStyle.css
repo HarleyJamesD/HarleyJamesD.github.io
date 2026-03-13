@@ -19,6 +19,11 @@
     cursor: pointer;
     pointer-events: auto; /* Also add this so clicks work */
 }
+.no-gpu #blur {
+	backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: rgba(6, 0, 0, 0.65); /* opaque fallback */
+}
 
 #title {
 	position: fixed;
