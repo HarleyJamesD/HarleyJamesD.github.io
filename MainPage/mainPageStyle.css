@@ -89,6 +89,10 @@ section {
   font-weight: 400;
 }
 
+#chapterList li.chapterSelected:hover {
+  font-weight: 800;
+}
+
 
 /*——————————————————
   DESKTOP: Side layout
@@ -249,13 +253,17 @@ a {
 }
 
 .ProjectCard {
+  /*cursor: none;*/
   text-decoration: none;
   color: inherit;
   aspect-ratio: 1/1.4;
+  /* fit inside the grid cell */
   max-width: 70%;
   max-height: 92%;
+  /* let the browser pick the limiting dimension */
   width: auto;
   height: auto;  
+ 
   padding: 0.5rem 0.5rem 0.2rem 0.5rem;
   border-radius: 1rem;
   border-width: 0rem;
@@ -264,38 +272,38 @@ a {
   background-color: white;
   overflow: hidden;
   position: relative;
+ 
   transition: transform 0.3s ease-out 0s;
 }
-
+ 
 .ProjectCard:hover {
   transform: scale(1.05);
   z-index: 10;
 }
-
+ 
 .ProjectCard h1 {
   margin: 0;
   margin-left: 1%;
   margin-top: 1%;
-  font-size: clamp(0.1rem, 1.4rem, 10rem);
+  font-size: clamp(0.5rem, 1.2vw, 2rem);
 }
-
+ 
 .ProjectCard .CardBlurb {
   user-select: none;
   margin: 0;
   width: 98%;
   max-height: 22%;
-  font-size: clamp(0.7rem, 1rem, 10rem);
+  font-size: clamp(0.5rem, 0.85vw, 1.2rem);
   margin-left: 1%;
-  margin-top: 1%;
+  /*margin-top: 1%;*/
   margin-bottom: 100%;
   scrollbar-width: thin; 
   overflow-y: auto;
 }
-
+ 
 .ProjectCard p {
   margin: 0;
 }
-
 .CardImage {
   width: 99%;
   height: 65%;
@@ -313,11 +321,11 @@ a {
 }
 
 #VULTURCard .ProjectCard h1 {
-  font-size: clamp(1rem, 2.3rem, 30rem);
+  font-size: clamp(1rem, 2rem, 30rem);
 }
 
 #VULTURCard .ProjectCard p {
-  font-size: clamp(0.3rem, 0.6vh + 0.6vw + 0.3rem, 2rem);
+  font-size: clamp(0.3rem, 0.3rem + 0.5vw + 0.5vh, 5rem);
 }
 
 /* Hide mobile-only view all on desktop */
@@ -473,6 +481,19 @@ a {
   }
 }
 
+/*══════════════════════════════════════════
+  THIN WINDOW
+══════════════════════════════════════════*/
+@media (max-width: 1200px) {
+  #chapterList{
+    font-size: var(--text-h2);
+  }
+
+  #experiences {
+    max-height: 40%;
+  }
+}
+
 
 /*══════════════════════════════════════════
   MOBILE STYLES  (≤ 768px)
@@ -548,23 +569,20 @@ a {
     cursor: pointer;
   }
 
-  /* Selected: bold + amber text; pill provides the background */
-  #chapterList li.chapterSelected {
-    font-weight: 800;
-    color: #8a6800;
-    transform: none !important;
-    scale: none !important;
-  }
-
   #chapterList.normal-click li:hover {
     transform: none !important;
     font-weight: 600;
   }
 
+    /* Selected: bold + amber text; pill provides the background */
+  #chapterList li.chapterSelected:hover {
+    
+  }
+
   /*
    * Repurpose the pill as a horizontal sliding highlight
    * that glides behind whichever tab is active.
-   * JS sets `left` instead of `top` on mobile.
+   * JS sets `left` instead of `top` on mobile.+
    */
   #chapterPill {
     display: block;

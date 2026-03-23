@@ -77,12 +77,12 @@ h1 {
 }
 
 .ProjectTab.jumping {
-  animation: cardJump 1.8s ease-in-out;
+  animation: cardJump 2s ease-in-out;
 }
 
 @keyframes cardJump {
-  0%, 100% { transform: translateX(0)    scale(1); }
-  50%       { transform: translateX(1.6vw) scale(1.01); }
+  0%, 100% { transform: translateX(0)}
+  50%       { transform: translateX(1.6vw)}
 }
 
 picture {

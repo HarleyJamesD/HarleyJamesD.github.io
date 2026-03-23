@@ -44,7 +44,7 @@ $(document).ready(function(){
 	let jumpIndex    = 0;
 	let jumpInterval = null;
 	let jumpResume   = null;
-	const JUMP_SPEED = 800;  // ms between each card's jump
+	const JUMP_SPEED = 900;  // ms between each card's jump
 	const JUMP_DELAY = 1500; // ms to wait after hover before resuming
 
 	function startJumpCycle() {

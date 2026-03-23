@@ -151,7 +151,7 @@
 }
 
 .socialMedia.jumping {
-  animation: cardJump 1.5s ease-in-out;
+  animation: cardJump 2s ease-in-out;
 }
 
 #email-ghost {
