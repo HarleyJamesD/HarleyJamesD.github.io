@@ -147,7 +147,7 @@
 
 @keyframes cardJump {
   0%, 100% { transform: translateY(0)    scale(1); }
-  50%       { transform: translateY(-3vh) scale(1.01); }
+  50%       { transform: translateY(-2vh) scale(1.05); }
 }
 
 .socialMedia.jumping {
