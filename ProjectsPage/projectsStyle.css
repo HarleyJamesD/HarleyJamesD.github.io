@@ -15,26 +15,26 @@ body {
   right: 0;
   top: 0;
   margin: 1rem;
-  width: 5rem;
-  height: 2.5rem;
-  font-size: 0.6rem;
+  padding: 0.5rem;
+  width: calc(var(--text-body)*6);
+  font-size: 0.7rem;
   border-radius: 1rem;
-  border-width: 0.1rem;
   border-style: none;
+  box-shadow: 0 0 0.1rem 0 black; 
+  transition: all 0.3s ease-in-out 0s;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: inset 0 0 0 0.04rem black; 
-  transition: all 0.3s ease-out 0s;
 }
 
 #return button:hover{
   font-weight: 900;
-  box-shadow: inset 0 0 0 0.1rem black; 
+  box-shadow: 0 0 0.05rem 0 black; 
 }
 
 section {
   width: 70%;
   margin: auto;
+  margin-bottom: 5rem;
 }
 
 a {
@@ -44,15 +44,16 @@ a {
 }
 
 h1 {
-  font-size: 8rem;
+  font-size: var(--text-h1);
   display: block;
-  margin: 5vh 0 0 5vw;
-  /*margin-top: 10vh;*/
 }
 
 #ProjectList {
   display: flex;
-  height: 70vh;
+  height: 80vh;
+  padding-top: 15vh;
+  padding-bottom: 5vh;
+  margin-left: 25vw;
   flex-direction: column;
   align-items: center;
   justify-content: stretch;
@@ -98,7 +99,7 @@ picture img {
 
 .ProjectTab h2 {
   line-height: 1;
-  font-size: 2rem;
+  font-size: var(--text-h2);
 }
 
 .ProjectTab:hover {
@@ -112,7 +113,7 @@ h2 {
   /*padding-top: 0.4rem;*/
   line-height: 0.9;
   display: block;
-  font-size: 4rem;
+  font-size: var(--text-h2);
   text-align: center;
 }
 
@@ -121,35 +122,63 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10vh 0 5vh 0;
+  margin: 5vh 0 5vh 0;
   padding: 2vh;
   background-color: white;
-  box-shadow: 0rem -0.5rem 1rem -1rem;
+  box-shadow: 0 0.2rem 0 0.1rem var(--color-chrome);
   gap: 1rem;
+  min-height: 4rem;
+}
+
+.ProjectBanner nav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+.ProjectBanner nav a {
+  display: contents; /* makes <a> invisible to grid — buttons become direct grid children */
+  /*Why display: contents is the key: without it, the grid sees <a> elements as its children and places them in columns — 
+  the <button> inside never participates in the grid. 
+  display: contents removes the <a> box from the layout tree while keeping its contents (the button), so the button becomes the actual grid item.*/
 }
 
 .ProjectBanner button {
-  width: 10rem;
-  height: 2rem;
+  position: relative; 
+}
+
+.ProjectBanner nav button::after {
+  content: attr(data-text);
+  font-weight: 900;
+  display: block;
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ProjectBanner button {
+  padding: 0.5rem 1rem 0.5rem 1rem;
   border-style: none;
   border-radius: 0.6rem;
   box-sizing: border-box;
   box-shadow: inset 0 0 0 0.05rem black;
-  font-size: 0.7rem;
+  font-size: var(--text-body);
   border-color: black;
   transition: all 0.3s ease-out 0s;
   overflow: hidden;
-  line-height: 1rem;
 }
 
-.ProjectBanner button:hover {
+.ProjectBanner nav button:hover {
   box-shadow: inset 0 0 0 0.09rem black;
   transform: scale(1.04);
-  font-weight: 900;
+  font-weight: 900; /* now safe — cell was already pre-sized for this */
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: var(--text-h3);
   padding: 0;
   margin: 0;
   margin-top: 3rem;
@@ -182,7 +211,7 @@ img {
 
 .InfoBlock p {
   margin: 0 0.5rem 0 0.5rem;
-  font-size: 1.2rem;
+  font-size: var(--text-body);
 }
 
 .InfoBlock h2 {

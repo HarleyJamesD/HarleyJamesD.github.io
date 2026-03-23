@@ -35,4 +35,8 @@ $(document).ready(function(){
 	    $('html').css('scroll-behavior', '');
 	  });
 	});
+
+	$('.ProjectBanner nav button').each(function() {
+  $(this).attr('data-text', $(this).text());
+});
 })

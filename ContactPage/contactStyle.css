@@ -112,14 +112,15 @@
 
 #socials {
 	display: grid;
-	grid-template-rows: 1fr 1fr 1fr;
-	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 40% 1fr 1fr;
 	margin-left: auto;
 	margin-right: 12vw;
+	margin-top: 25vh;
 	gap: 1.5rem;
-	height: 80vh;
+	height: 55vh;
 	width: auto;
-	max-width: 40vw;
+	max-width: 70vw;
 	padding-top: 10vh;
 	padding-bottom: 10vh;
 }
@@ -172,13 +173,14 @@
 }
 
 #email {
-	grid-column: 1/-1;
-	grid-row: 1/1;
+	grid-column: 1/2;
+	grid-row: 1/-1;
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
 	transition: all 0.4s ease-out;
-	/*align-self: flex-start;*/
+	width: 100%;
+	height: 100%;
 }
 
 .email.elevated {
@@ -195,7 +197,9 @@
 	cursor: default;
 	box-sizing: border-box;
 	overflow: hidden;
-	width: 40vw;
+	
+	transform: translate(0, -20vh);
+	width: 60vw;
 	height: 70vh;
 	display: flex;
 	flex-direction: row;

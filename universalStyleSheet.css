@@ -1,5 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap');
+
+:root {
+  /* === DESIGN TOKENS === */
+
+  /* Color — chrome layer */
+  --color-chrome: #FFC94B;
+  --color-chrome-text: #1a1200;  /* text ON yellow */
+  --color-chrome-subtle: rgba(255, 201, 75, 0.12);
+
+  /* Color — surface layer */
+  --color-surface: white;
+  --color-surface-border: rgba(0,0,0,0.1);
+
+  /* Typography — 4-level scale */
+  --text-h1: clamp(2.6rem, 4vw, 4rem);   /* page titles */
+  --text-h2: clamp(1.8rem, 2.5vw, 3rem); /* section titles */
+  --text-h3: clamp(1.2rem, 1.6vw, 1.8rem); /* card titles */
+  --text-body: clamp(0.9rem, 1.2vw, 1.3rem); /* body text */
+
+  /* Spacing rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  /*--space-slg: 6rem;*/
+}
+
+
 html, body {
   font-family: system-ui, sans-serif;
   margin: 0;
@@ -45,7 +73,7 @@ header {
 }
 
 header:hover {
-  background-color: #FFC94B;
+  background-color: var(--color-chrome);
   box-shadow: 0 0 2rem -1.2rem black; 
 }
 
@@ -69,7 +97,7 @@ header button {
   height: 100%;
   box-sizing: border-box;
   text-transform: uppercase;
-  font-size: clamp(1.4rem, 1vw + 0.5vh, 2rem);
+  font-size: var(--text-h3);
   color: black;
   border-radius: 1rem;
   border-color: transparent;
@@ -82,6 +110,22 @@ header button:hover {
   font-variation-settings: 'wdth' 150, 'wght' 750;
 }
 
+
+.page-section-pill {
+  position: absolute;
+  top: 4rem;
+  display: inline-block;
+  background: var(--color-chrome);
+  color: var(--color-chrome-text);
+  border-radius: 999px;
+  padding: 0.3em 1em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: var(--text-h1);
+  margin-bottom: var(--space-md);
+  margin-left: var(--space-md);
+  /*margin-top: var(--space-slg);*/
+}
 
 /* Loading Screen */
 #loadingScreen {
@@ -103,7 +147,7 @@ header button:hover {
 }
 
 #loadingScreen h1 {
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: var(--text-h2);
   color: white;
   margin-bottom: 2rem;
   font-weight: 500;
