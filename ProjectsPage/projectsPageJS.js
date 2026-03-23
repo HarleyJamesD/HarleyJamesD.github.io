@@ -37,6 +37,59 @@ $(document).ready(function(){
 	});
 
 	$('.ProjectBanner nav button').each(function() {
-  $(this).attr('data-text', $(this).text());
-});
+	  $(this).attr('data-text', $(this).text());
+	});
+
+	// ── Idle jump cycle ───────────────────────────────────────────────
+	let jumpIndex    = 0;
+	let jumpInterval = null;
+	let jumpResume   = null;
+	const JUMP_SPEED = 800;  // ms between each card's jump
+	const JUMP_DELAY = 1500; // ms to wait after hover before resuming
+
+	function startJumpCycle() {
+	    if (jumpInterval) return;
+	    jumpInterval = setInterval(function () {
+	        const cards = $('.ProjectTab');
+	        const card  = cards.eq(jumpIndex % cards.length);
+	        // Don't jump a card the user is hovering
+	        if (!card.is(':hover')) {
+	            card.removeClass('jumping');
+	            // Force reflow so re-adding the class restarts the animation
+	            card[0].getBoundingClientRect();
+	            card.addClass('jumping');
+	            card.one('animationend', function () {
+	                $(this).removeClass('jumping');
+	            });
+	        }
+	        jumpIndex++;
+	    }, JUMP_SPEED);
+	}
+
+	function stopJumpCycle() {
+	    clearInterval(jumpInterval);
+	    jumpInterval = null;
+	    $('.ProjectTab').removeClass('jumping');
+	}
+
+	// Pause on any card hover, resume after delay
+	$('.ProjectTab').on('mouseenter', function () {
+	    clearTimeout(jumpResume);
+	    stopJumpCycle();
+	}).on('mouseleave', function () {
+	    clearTimeout(jumpResume);
+	    jumpResume = setTimeout(function () {
+	        jumpIndex = 0;
+	        startJumpCycle();
+	    }, JUMP_DELAY);
+	});
+
+	// Also pause while email is expanded, resume when closed
+	// Wrap collapseEmail to restart the cycle — add this inside collapseEmail()
+	// after the fadeOut line:
+	//   jumpResume = setTimeout(startJumpCycle, JUMP_DELAY);
+	// And at the top of the expand click handler add:
+	//   stopJumpCycle();
+
+	startJumpCycle();
 })

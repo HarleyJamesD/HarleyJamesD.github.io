@@ -76,6 +76,15 @@ h1 {
   transition: transform 0.3s ease-out 0s;
 }
 
+.ProjectTab.jumping {
+  animation: cardJump 1.5s ease-in-out;
+}
+
+@keyframes cardJump {
+  0%, 100% { transform: translateX(0)    scale(1); }
+  50%       { transform: translateX(2vw) scale(1.01); }
+}
+
 picture {
   justify-self: start;
   display: block;
