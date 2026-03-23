@@ -124,7 +124,6 @@ header button:hover {
   font-size: var(--text-h1);
   margin-bottom: var(--space-md);
   margin-left: var(--space-md);
-  /*margin-top: var(--space-slg);*/
 }
 
 /* Loading Screen */
@@ -182,7 +181,6 @@ header button:hover {
 
 /*——————————————————
   MOBILE HEADER  (≤ 768px)
-  ~70% width, centered, larger buttons, horizontal row
 ——————————————————*/
 @media (max-width: 768px) {
   header {
@@ -190,7 +188,6 @@ header button:hover {
     transform: translateX(-50%);
     margin: 0.6em 0 0 0;
     width: 90%;
-
     border-radius: 1.2rem;
     padding: 0.4em 0.6em;
   }
@@ -211,7 +208,7 @@ header button:hover {
     padding: 0.55em 0.4em;
     font-size: clamp(0.65rem, 3vh, 2rem);
     border-radius: 0.8rem;
-        height: 6vh;
+    height: 6vh;
   }
 
   #NameButton {
@@ -233,4 +230,114 @@ header button:hover {
 footer {
   margin: auto;
   text-align: center;
+}
+
+
+/* =============================================
+   NAV DROPDOWNS
+   ============================================= */
+ 
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+ 
+/* Rotating chevron on each trigger button */
+.nav-dropdown > a > button::after {
+  content: ' ▾';
+  font-size: 0.6em;
+  opacity: 0.5;
+  vertical-align: middle;
+  display: inline-block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: rotate(180deg);
+}
+ 
+.nav-dropdown:hover > a > button::after {
+  opacity: 1;
+  transform: rotate(0);
+}
+ 
+/* The panel itself */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 14rem;
+  background: rgba(255, 255, 255, 0.97);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-radius: 0.9rem;
+  padding: 0.3rem;
+  box-shadow: 0 0.5rem 2rem -0.2rem rgba(0, 0, 0, 0.16),
+              0 0 0 1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  /* Hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 200;
+}
+ 
+/* Invisible bridge covering the gap between button and panel */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 0.6rem; /* matches the gap set by top: calc(100% + 0.5rem) */
+}
+ 
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+ 
+/* Individual items */
+.dropdown-menu a {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: black;
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.6rem;
+  font-family: "Roboto Flex", "Roboto", sans-serif;
+  font-size: clamp(0.65rem, 0.75vw + 0.15rem, 0.95rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: background 0.15s ease, font-variation-settings 0.15s ease;
+  font-variation-settings: 'wdth' 100, 'wght' 500;
+}
+ 
+.dropdown-menu a:hover {
+  background: var(--color-chrome);
+  font-variation-settings: 'wdth' 120, 'wght' 720;
+}
+ 
+/* Social icons inside dropdown */
+.dropdown-icon {
+  width: 1.1em;
+  height: 1.1em;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+ 
+/* On mobile the nav is already compact — hide dropdowns entirely
+   and unwrap the container so the grid layout still works */
+@media (max-width: 768px) {
+  .dropdown-menu { display: none; }
+  .nav-dropdown > a > button::after { content: ''; }
+  .nav-dropdown { display: contents; }
 }
