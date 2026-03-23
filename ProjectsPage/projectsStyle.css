@@ -262,6 +262,20 @@ li{
   box-shadow: 0.3rem 0.3rem 0.9rem -0.4rem;
 }
 
+.ProjectsList h2 {
+  text-align: left;
+  display: block;
+  box-shadow: -0.3rem 0 0 0 var(--color-chrome);
+  padding-left: 0.5rem;
+  padding-bottom: 0.2rem;
+  margin-top: 2rem;
+  background-color: wh;
+}
+
+.ProjectsList h3 {
+  margin-top: 1rem;
+}
+
 @media (max-aspect-ratio: 4/3) {
   .imageArray {
     flex-wrap: wrap;

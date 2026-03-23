@@ -92,22 +92,6 @@
       </picture>
       <h2>Game Jam Projects</h2>
     </a>
-
-
-<!--     <div class="ProjectTab">
-      <picture>
-        <img src="Pictures/VulturContent/VULTUR_SXSWPromo_Wide.PNG" style="object-position: 50% -5%; scale: 120%;">
-      </picture>
-      <h2>Liminal VR Internship</h2>
-    </div>
-    <div class="ProjectTab">
-      <picture>
-        <img src="Pictures/VulturContent/VULTUR_SXSWPromo_Wide.PNG" style="object-position: 50% -5%; scale: 120%;">
-      </picture>
-      <h2>Portfolio Website</h2>
-    </div> 
-     -->
-
   </div>
   
   <div class="ProjectBanner" id="VULTUR">
@@ -168,6 +152,15 @@
       <img src="Pictures/Screenshot 2024-11-10 234936.png">
     </div>
 
+    <h3>SXSW Showcase</h3>
+    <p>Because of our great reception throughout the development of VULTUR Macquarie University pushed us forward to present VULTUR at the SXSW Games Festival Showcase in 2024. This was a great opportunity for my team and I to explore the industry and make some valuable connections. It was also a great opportunity for our game to receive a wider amount of playtesting, providing me with more valuable hands on data of how players interact with the level design, and the weapon types.</p>
+
+    <div class="imageArray">
+      <img src="Pictures/VulturContent/SXSWPic.png">
+      <img src="Pictures/VulturContent/SXSWPicMe.png">
+      <img src="Pictures/VulturContent/SXSWPicExplain.png">
+    </div>
+
  	</section>
 
 
@@ -198,21 +191,20 @@
         <img src="Pictures/TerminalVelocityContent/screenshot2.png">
       </div>  
 
+      <h3>Promotion and Future</h3>
+      <p>Since the game jam, because of our achievement as crowd favourite and Best Party Game me and my team went on to showcase Terminal Velocity while working alongside Macquarie University at many events including the University open days and the Macquarie Observatory for expo nights. These events showcased the immense fun and community our game could cultivate, and will go on to serve as a useful tool for Macquarie University to add some flair to their future events.</p>
+      <div class="imageArray">
+        <img src="Pictures/TerminalVelocityContent/TVPresentation.png">
+        <img src="Pictures/TerminalVelocityContent/TVPresentation2.png">
+        <img src="Pictures/TerminalVelocityContent/TVCertificate.png">
+      </div> 
+
  	</section>
 
   <div class="ProjectBanner" id="WebDesAndDev">
       <h2>Web Designing and Development</h2>
-<!--       <nav>
-        <a href="https://harley-james.itch.io/terminalvelocity">
-          <button>Play Terminal Velocity</button>
-        </a>
-      </nav>   -->
   </div>
   <section>
-    <!-- <div class="GameTitleImage">
-      <img src="Pictures/TerminalVelocityContent/TerminalVelocityCoverWider.png" style="position: relative; top: -10%;">
-    </div> -->
-
       <h3>Designing My Portfolio Website</h3>
       <p>During university I created a portfolio website to demonstrate my skill and experience. To create this first iteration I used google sites. This allowed me to quickly test page flow and content grouping. </p>
       <p>I quickly wanted to create a custom website to build my HTML, CSS, and Javascript skills, with the added bonus of complete customisation to tailor towards my own style. I created a small website to gain experience with page publication and data load times, but wanted more complexity for the design.</p>
@@ -282,12 +274,8 @@
         </a>
       </nav>  
   </div>
-  <section>
-<!--     <div class="GameTitleImage">
-      <img src="Pictures/banner of other games.png" style="position: relative; top: 10%; scale: 150%;">
-    </div> -->
-
-    <h3>Don't Let Us Die</h3>
+  <section class="ProjectsList">
+    <h2>Don't Let Us Die</h2>
     <p>This is an RNG strategy game I have been developing, with a focus on building skills in event based systems, decoupling, and managing execution order.</p>
     <p>In this game you try to "beat" a die (aka the Bomb Die), you beat it by creating patterns which increments the die, creating a pattern when the die is on 6 will result in a successful diffuse. Not creating a pattern in 4 rolls will decrement the die. The player has to use strategy tools to boost their odds and maximise their luck.</p>
 
@@ -295,7 +283,7 @@
       <img src="Pictures/DontDIERollingHQ.gif">
     </div>  
 
-    <h3>Non-Stop Plane</h3>
+    <h2>Non-Stop Plane</h2>
     <p>This is a top down 2D shooter I have been developing, with a focus on building skills in design patterns, inheritance, decoupling, object pooling, and abstraction. With three main behaviour trees (bullet behaviour, weapon behaviour, enemyMovement behaviour) it was a perfect way for me to build my skills in behaviour patterns. Using object pooling allowed me to improve optimisation of instantiating objects.</p>
     <div class="imageArray">
       <img src="Pictures/Plane Game Early Enemy Movement.gif">
@@ -307,6 +295,9 @@
   <div class="ProjectBanner" id="GameJamProjects">
     <h2>Game Jam Projects</h2>
       <nav>
+        <a href="https://harley-james.itch.io/tower-of-reprise">
+          <button>Play Tower Of Reprise</button>
+        </a>
         <a href="https://m0j0man.itch.io/postjam-oilspill">
           <button>Play OilSpill</button>
         </a>
@@ -315,12 +306,39 @@
         </a>
       </nav>  
   </div>
-  <section>
+  <section class="ProjectsList">
     <div class="GameTitleImage">
       <img src="Pictures/banner of other games.png" style="position: relative; top: 10%; scale: 150%;">
     </div>
 
-    <h3>OilSpill</h3>
+    <h2>Tower Of Reprise</h2>
+    <p>A solo-developed physics platformer with all the code and art done by me. Started as a Game Jam entryfor the GMTK 2025 Game Jam, then completely rebuilt from scratch in March 2026.</p>
+    <h3>Level Design</h3>
+    <p>I used visual weight to communicate danger before it happens, wider, stable platforms early on feel safe, while narrower geometry higher up quietly signals risk. Branching paths give the player real choices, which matters because different routes become viable at different points in the loop.
+
+    Level data is split across a visual tilemap and a hidden metadata tilemap, so I can tweak the look or the wave timing independently without either breaking the other.</p>
+    <h3>Code Architecture</h3>
+    <p>A lot of this rebuild was about writing code that's easier to work with. A few things came together well:</p>
+    <ul>
+      <li><strong>Event system</strong> — Systems communicate through C# Action events rather than direct references, so I could work on one system without worrying about breaking another.</li>
+      <li><strong>Metadata-driven waves</strong> — Wave tile assignments are painted into a hidden tilemap in the editor and read into a dictionary at runtime. Adding tiles to a wave means painting, not coding.</li>
+      <li><strong>Custom audio pooling</strong> — Unity's PlayOneShot can't be stopped mid-play. My fix was a pooled AudioSource per looping clip, tracked by a dictionary where stopping a sound just returns it to the pool.
+      <li><strong>ScriptableObject volumes</strong> — Volume settings live in a ScriptableObject so they persist between scenes without needing DontDestroyOnLoad.
+    </ul>
+
+    <h3>Leaderboard & API Integration</h3>
+    <p>I integrated Unity Gaming Services to add a global leaderboard, anonymous sign-in on launch, time submitted on completion. The whole flow is async/await, which was new to me coming from coroutines. One gotcha: the SDK returns metadata as a raw JSON string rather than a typed dictionary, so I had to deserialise it with Newtonsoft.Json to read player names back out, something the docs don't make obvious.</p>
+
+    <h3>Art Overhaul</h3>
+    <p>Using tools for pixel art I was able to create a more personalised visual style for my game. Creating animations for the player character bridged a huge gap between the player and visual gameplay feedback that was missing from the original build of the game. It allowed me to add more complexity to the environment and build more empathy towards the player character as he is quite adorable.</p>
+    <p>Old:</p>
+    <div class="imageArray">
+      <img src="Pictures/towerOfReprise1.png">
+      <img src="Pictures/towerOfReprise2.png">
+      <img src="Pictures/towerOfReprise3.png">
+    </div> 
+
+    <h2>OilSpill</h2>
     <p>One of my earliest game projects, I was in charge of level design and programming some obstacles. Being in charge of level design for a puzzle platformer required me to think outside the box and create satisfying solutions that integrate seamlessly into the games mechanics.</p>
     <div class="imageArray">
       <img src="Pictures/oilspill gameplay.PNG">
@@ -328,7 +346,7 @@
       <img src="Pictures/Screenshot 2026-01-29 202057.png">
     </div>  
 
-    <h3>The Magnet Heist of Robo-City</h3>
+    <h2>The Magnet Heist of Robo-City</h2>
     <p>This project had a team only consisting of me and one artist. I was the lead programmer and game designer. My time as the lead programmer was an extremely valuable experience, allowing me to build my skills in an area I was weak in at the time. As the project only had a development time of two days, my experience as the lead designer cemented my core design fundamentals. I had to prioritise the core gameplay mechanics and fight off scope creep, and I was forced to focus on creating the core fun of the experience.</p>
     <div class="imageArray">
       <img src="Pictures/magnet game forest.png">
